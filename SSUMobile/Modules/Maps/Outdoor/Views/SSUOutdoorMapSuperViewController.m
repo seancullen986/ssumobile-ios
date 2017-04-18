@@ -37,6 +37,7 @@ const CFTimeInterval kMinimumTimeElapsedBetweenNavigationUpdates = 2;
 
 @implementation SSUBorderLabel
 - (void)drawTextInRect:(CGRect)rect {
+    printf("Hello\n");
     // http://stackoverflow.com/a/1424665
     CGSize shadowOffset = self.shadowOffset;
     UIColor *textColor = self.textColor;
