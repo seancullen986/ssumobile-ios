@@ -162,6 +162,7 @@
 		78FE792816C9D04500626462 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 78FE792716C9D04500626462 /* Settings.bundle */; };
 		78FE792C16CAA30B00626462 /* SSUSettingsConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FE792B16CAA30B00626462 /* SSUSettingsConstants.m */; };
 		825C072D1EA82E87004ED9DA /* SSUScheduleModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825C072C1EA82E87004ED9DA /* SSUScheduleModule.swift */; };
+		825C07301EA836C1004ED9DA /* SSUConfiguration+Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825C072F1EA836C1004ED9DA /* SSUConfiguration+Schedule.swift */; };
 		AAEF4F5B18FFAB6C0006276D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEF4F5A18FFAB6C0006276D /* QuartzCore.framework */; };
 		AAEF4FAB1900AC130006276D /* SSUOutdoorMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF4FAA1900AC130006276D /* SSUOutdoorMapViewController.m */; };
 		C40035A116B9C6BC00B27F93 /* SSUPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40035A016B9C6BC00B27F93 /* SSUPersonViewController.m */; };
@@ -460,6 +461,7 @@
 		78FE792A16CAA30B00626462 /* SSUSettingsConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSUSettingsConstants.h; sourceTree = "<group>"; };
 		78FE792B16CAA30B00626462 /* SSUSettingsConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSUSettingsConstants.m; sourceTree = "<group>"; };
 		825C072C1EA82E87004ED9DA /* SSUScheduleModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSUScheduleModule.swift; sourceTree = "<group>"; };
+		825C072F1EA836C1004ED9DA /* SSUConfiguration+Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SSUConfiguration+Schedule.swift"; sourceTree = "<group>"; };
 		85EEDAB3A3C7CAAD14070BF5 /* Pods-SSUMobile-SSUMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSUMobile-SSUMobileTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SSUMobile-SSUMobileTests/Pods-SSUMobile-SSUMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA72986C1905D17500A63F99 /* Path_TuscanyToSalazar.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Path_TuscanyToSalazar.gpx; sourceTree = "<group>"; };
 		AAEF4F5A18FFAB6C0006276D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1141,6 +1143,7 @@
 			isa = PBXGroup;
 			children = (
 				825C072C1EA82E87004ED9DA /* SSUScheduleModule.swift */,
+				825C072F1EA836C1004ED9DA /* SSUConfiguration+Schedule.swift */,
 			);
 			name = Schedule;
 			sourceTree = "<group>";
@@ -1694,6 +1697,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				825C07301EA836C1004ED9DA /* SSUConfiguration+Schedule.swift in Sources */,
 				0766F1871B4BA404003BD52C /* SSUMapBuilder.m in Sources */,
 				071E237819E2380B00483138 /* SSUResourcesViewController.m in Sources */,
 				07F54F691E888F2300D24EA7 /* SSUNewsViewController.swift in Sources */,

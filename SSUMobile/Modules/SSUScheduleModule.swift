@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI, SSUSpotlightSupportedProtocol {
+class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     
     @objc(sharedInstance)
     static let instance = SSUScheduleModule()
@@ -16,7 +16,7 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI, SSUSpotlightSupport
     // MARK: SSUModule
     
     var title: String {
-        return NSLocalizedString("Schedule", comment: "Add info about scheduler here") // TODO
+        return NSLocalizedString("Schedule", comment: "A tool for students to view their classes and search current courses offered at SSU")
     }
     
     var identifier: String {
@@ -27,39 +27,66 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI, SSUSpotlightSupport
         setupCoreData(modelName: "Schedule", storeName: "Schedule")
     }
     
-    func updateData(_ completion: (() -> Void)? = nil) {
-        SSULogging.logDebug("Update Schedule")
+//    func updateData(_ completion: (() -> Void)? = nil) {
+//        SSULogging.logDebug("Update Schedule")
 //        updateSchedule {
 //            self.updateClasses {
 //                completion?()
 //            }
 //        }
-    }
+//    }
     
     
     func updateClasses(completion: (() -> Void)? = nil) {
-        let date = SSUConfiguration.sharedInstance().date(forKey:SSUScheduleClassesUpdatedDateKey)
-        SSUMoonlightCommunicator.getJSONFromPath("schedule/classes", since:date) { (response, json, error) in
+//        let date = SSUConfiguration.sharedInstance().date(forKey:SSUScheduleClassesUpdatedDateKey)
+        let lastUpdate = SSUConfiguration.sharedInstance().scheduleLastUpdate
+          SSUMoonlightCommunicator.getJSONFromPath("schedule/classes", since:lastUpdate) { (response, json, error) in   // update JSON path
             if let error = error {
                 SSULogging.logError("Error while attemping to update Schedule Classes: \(error)")
                 completion?()
             } else {
-                SSUConfiguration.sharedInstance().setDate(Date(), forKey: SSUDirectoryPersonUpdatedDateKey)
-                self.buildPeople(json) {
+                SSUConfiguration.sharedInstance().scheduleLastUpdate = Date()
+                self.build(json: json) {
                     completion?()
                 }
             }
         }
     }
 
-
-
-
+    private func build(json: Any, completion: (() -> Void)? = nil) {
+//        let builder = SSUScheduleBuilder()
+//        builder.context = backgroundContext
+//        backgroundContext.perform {
+//            builder.build(json)
+//            SSULogging.logDebug("Finish building Calendar")
+//            completion?()
+//        }
+    }
+    
+    // MARK: SSUModuleUI
+    
+    func imageForHomeScreen() -> UIImage? {
+        return UIImage(named: "directory_icon")
+    }
+    
+    func viewForHomeScreen() -> UIView? {
+        return nil
+    }
+    
+    func initialViewController() -> UIViewController {
+        let storyboard = UIStoryboard(name: "Directory_iPhone", bundle: Bundle(for: type(of: self)))
+        return storyboard.instantiateInitialViewController()!
+    }
+    
+    func shouldNavigateToModule() -> Bool {
+        return true
+    }
+    
+    func showModuleInNavigationBar() -> Bool {
+        return false
+    }
+    
 }
-
-
-
-
 
 
 
