@@ -137,6 +137,7 @@
 		07FD090B1BA084B0005C38DD /* News.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07FD090A1BA084B0005C38DD /* News.xcassets */; };
 		07FD090E1BA084E1005C38DD /* Resources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07FD090D1BA084E1005C38DD /* Resources.xcassets */; };
 		07FD09111BA08548005C38DD /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07FD09101BA08548005C38DD /* Map.xcassets */; };
+		301B08B71EB1583000C0769E /* SSURadioCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 301B08B61EB1583000C0769E /* SSURadioCalendarViewController.m */; };
 		32597B97B76EBBC89FACB276 /* Pods_SSUMobile_SSUMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32ABF172766A61AEA3D7C928 /* Pods_SSUMobile_SSUMobileTests.framework */; };
 		414E70C1B66B29136704BB07 /* Pods_SSUMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15D260ED7782DBBDDB90284 /* Pods_SSUMobile.framework */; };
 		7801C3C116E6FE4600119B63 /* SSUMapBuildingPerimeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C3C016E6FE4600119B63 /* SSUMapBuildingPerimeter.m */; };
@@ -400,6 +401,8 @@
 		07FD090D1BA084E1005C38DD /* Resources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Resources.xcassets; sourceTree = "<group>"; };
 		07FD09101BA08548005C38DD /* Map.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Map.xcassets; sourceTree = "<group>"; };
 		0C1A439034C8F57F972715D9 /* Pods-SSUMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSUMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SSUMobile/Pods-SSUMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		301B08B51EB1583000C0769E /* SSURadioCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSURadioCalendarViewController.h; sourceTree = "<group>"; };
+		301B08B61EB1583000C0769E /* SSURadioCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSURadioCalendarViewController.m; sourceTree = "<group>"; };
 		32ABF172766A61AEA3D7C928 /* Pods_SSUMobile_SSUMobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSUMobile_SSUMobileTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A2E91994D68F474CA7233FC /* Pods-SSUMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSUMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-SSUMobile/Pods-SSUMobile.release.xcconfig"; sourceTree = "<group>"; };
 		6ECD0CF536E5226CF9571B5A /* Pods-SSUMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSUMobileTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SSUMobileTests/Pods-SSUMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -812,6 +815,8 @@
 				07C2FE1419C6C5D00016349C /* Radio_iPhone.storyboard */,
 				07C2FE0F19C6C5AF0016349C /* SSURadioViewController.h */,
 				07C2FE1019C6C5AF0016349C /* SSURadioViewController.m */,
+				301B08B51EB1583000C0769E /* SSURadioCalendarViewController.h */,
+				301B08B61EB1583000C0769E /* SSURadioCalendarViewController.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1792,6 +1797,7 @@
 				074D135E1BA703FB0002899F /* Calendar.xcdatamodeld in Sources */,
 				0711E8121E8855B400F9ACDE /* SSUArticle+CoreDataProperties.swift in Sources */,
 				78A190B61717A0AA00D8768C /* SSUMapPoint.m in Sources */,
+				301B08B71EB1583000C0769E /* SSURadioCalendarViewController.m in Sources */,
 				78A190B91718ADCD00D8768C /* SSUMapPolygon.m in Sources */,
 				07A593BE1E9B1B0400D69DBB /* SSUDirectoryModule.swift in Sources */,
 				78A190BD171B3D0600D8768C /* SSUPointsBuilder.m in Sources */,
@@ -1950,6 +1956,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 2.0.1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = LUPR6FP8TW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SSUMobile/Supporting Files/SSUMobile-Prefix.pch";
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -1961,7 +1968,7 @@
 					"-all_load",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SSU.SSUMobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daniel.SSUMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SSUMobile/SSUMobile-Bridging-Header.h";
@@ -1984,6 +1991,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 2.0.1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = LUPR6FP8TW;
 				EXCLUDED_SOURCE_FILE_NAMES = (
 					"SSUDirectoryTools*",
 					SSUEditDepartmentViewController,
@@ -2001,7 +2009,7 @@
 					"-all_load",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SSU.SSUMobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daniel.SSUMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SSUMobile/SSUMobile-Bridging-Header.h";
