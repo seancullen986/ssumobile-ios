@@ -1956,7 +1956,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 2.0.1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = LUPR6FP8TW;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SSUMobile/Supporting Files/SSUMobile-Prefix.pch";
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -1968,7 +1968,7 @@
 					"-all_load",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daniel.SSUMobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SSU.SSUMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SSUMobile/SSUMobile-Bridging-Header.h";
@@ -1991,7 +1991,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 2.0.1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = LUPR6FP8TW;
+				DEVELOPMENT_TEAM = "";
 				EXCLUDED_SOURCE_FILE_NAMES = (
 					"SSUDirectoryTools*",
 					SSUEditDepartmentViewController,
@@ -2009,7 +2009,7 @@
 					"-all_load",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daniel.SSUMobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SSU.SSUMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SSUMobile/SSUMobile-Bridging-Header.h";

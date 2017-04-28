@@ -18,6 +18,5 @@
 #import "SSURadioStreamer.h"
 
 
-@interface SSURadioCalendarViewController : UIViewController <SSURadioStreamerDelegate>
-- (void)viewDidLoad;
+@interface SSURadioCalendarViewController : UIViewController
 @end
