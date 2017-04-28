@@ -22,7 +22,9 @@ static NSString * SSURadioPlayerLoadingMessage = @"Loading...";
 static NSString * SSURadioButtonImagePlay = @"radio_play";
 static NSString * SSURadioButtonImagePause = @"radio_pause";
 
-static NSString * SSURadioWebPageURL = @"http://www.ksunradio.com";
+// 4/25/17 Fixes performed: KSUNRADIO.COM is not the correct website. Changed to sonomastateradio.com
+static NSString * SSURadioWebPageURL = @"http://www.sonomastateradio.com";
+
 
 @interface SSURadioViewController() <UIActionSheetDelegate>
 
@@ -32,15 +34,22 @@ static NSString * SSURadioWebPageURL = @"http://www.ksunradio.com";
 
 @implementation SSURadioViewController
 
+//Added by Danny 4/25/17
+- (IBAction)calendarButton:(UIBarButtonItem *)sender {
+}
+
+//Added by Danny 4/25/17 --> Changed from previous method so another nav item could be added and for easier management
+- (IBAction)systemAction:(UIBarButtonItem *)sender {
+    [self actionButtonPressed:sender];
+}
+
 - (void)viewDidLoad
 {
-	[super viewDidLoad];
-	self.elapsedLabel.text = SSURadioPlayerReadyMessage;
+    [super viewDidLoad];
+    self.elapsedLabel.text = SSURadioPlayerReadyMessage;
     self.title = @"KSUN Radio";
-	
-	// System Volume slider
-	MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:self.volumeSlider.bounds];
-	[self.volumeSlider addSubview:volumeView];
+    MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:self.volumeSlider.bounds];
+    [self.volumeSlider addSubview:volumeView];
     
     self.streamer = [SSURadioStreamer sharedInstance];
     self.streamer.delegate = self;
@@ -48,9 +57,6 @@ static NSString * SSURadioWebPageURL = @"http://www.ksunradio.com";
     // It's possible the radio is already playing
     self.playing = self.streamer.playing;
     [self updateButtonImage];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
-
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -129,10 +135,8 @@ static NSString * SSURadioWebPageURL = @"http://www.ksunradio.com";
 
 /*
  Stops the radio streamer
- 
  This deactivates the audio session and removes the session from the MPNowPlayingInfoCenter and lock screen
  controls. Only call this in situations such as the application is about the terminate
- 
  */
 - (void) stop
 {
@@ -146,7 +150,7 @@ static NSString * SSURadioWebPageURL = @"http://www.ksunradio.com";
  @return NSString representaiton of time
  */
 - (NSString *) stringFromCMTime:(CMTime)time
-{    
+{
     int totalSeconds = CMTimeGetSeconds(time);
     int hours = floor(totalSeconds / 3600);
     int minutes = floor(totalSeconds % 3600 / 60);
@@ -164,6 +168,16 @@ static NSString * SSURadioWebPageURL = @"http://www.ksunradio.com";
     NSString * imageName = (self.isPlaying) ? SSURadioButtonImagePause : SSURadioButtonImagePlay;
     [self.button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
 }
+
+/* Segue added by Danny 4/25/17 to jump to new view for the calendar where a webview is loaded.
+   This is done so you can use the default nav bar back button to go back to the radio 
+   and not back to the home page
+ */
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"radioToCalendar"]) {
+        SSURadioCalendarViewController *vc = [segue destinationViewController];
+      }}
 
 #pragma mark -
 #pragma mark - IBActions
@@ -184,7 +198,7 @@ static NSString * SSURadioWebPageURL = @"http://www.ksunradio.com";
  
  This is called as the user is sliding the progress bar, while sliderFinished:
  is called when the user releases their finger from the slider. Here we do not want
- to actually seek the streamer to the location, but rather keep track of where the 
+ to actually seek the streamer to the location, but rather keep track of where the
  user slides and update the label to show them where they would be skipping to.
  
  @param aSlider: the sending UISlider, same as self.progressSlider
@@ -302,7 +316,7 @@ static NSString * SSURadioWebPageURL = @"http://www.ksunradio.com";
 
 - (void) dealloc
 {
-
+    
 }
 
 

@@ -9,6 +9,7 @@
 @import UIKit;
 
 #import "SSURadioStreamer.h"
+#import "SSURadioCalendarViewController.h"
 
 @interface SSURadioViewController : UIViewController <SSURadioStreamerDelegate>
 
