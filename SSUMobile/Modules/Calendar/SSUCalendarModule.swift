@@ -29,17 +29,21 @@ final class SSUCalendarModule: SSUCoreDataModuleBase, SSUModuleUI {
     
     func updateData(_ completion: (() -> Void)? = nil) {
         SSULogging.logDebug("Update Calendar")
-        let lastUpdate = SSUConfiguration.sharedInstance().calendarLastUpdate
-        SSUMoonlightCommunicator.getJSONFromPath("events/event", since: lastUpdate) { (response, json, error) in
-            if let error = error {
-                SSULogging.logError("Error while updating \(self.identifier): \(error)")
-                completion?()
-            } else {
-                SSUConfiguration.sharedInstance().calendarLastUpdate = Date()
-                self.build(json: json) {
-                    completion?()
-                }
-            }
+//        let lastUpdate = SSUConfiguration.sharedInstance().calendarLastUpdate
+//        SSUMoonlightCommunicator.getJSONFromPath("events/event", since: lastUpdate) { (response, json, error) in
+//            if let error = error {
+//                SSULogging.logError("Error while updating \(self.identifier): \(error)")
+//                completion?()
+//            } else {
+//                SSUConfiguration.sharedInstance().calendarLastUpdate = Date()
+//                self.build(json: json) {
+//                    completion?()
+//                }
+//            }
+//        }
+//        SSUConfiguration.sharedInstance().calendarLastUpdate = Date()
+        self.build(json: json) {
+            completion?()
         }
     }
     

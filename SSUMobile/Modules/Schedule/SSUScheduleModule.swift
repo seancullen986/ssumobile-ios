@@ -54,19 +54,19 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     }
 
     private func build(json: Any, completion: (() -> Void)? = nil) {
-//        let builder = SSUScheduleBuilder()
-//        builder.context = backgroundContext
-//        backgroundContext.perform {
-//            builder.build(json)
-//            SSULogging.logDebug("Finish building Calendar")
-//            completion?()
-//        }
+        let builder = SSUScheduleBuilder()
+        builder.context = backgroundContext
+        backgroundContext.perform {
+            builder.build(json)
+            SSULogging.logDebug("Finish building Schedule")
+            completion?()
+        }
     }
     
     // MARK: SSUModuleUI
     
     func imageForHomeScreen() -> UIImage? {
-        return UIImage(named: "directory_icon")
+        return UIImage(named: "schedule_icon") // TODO: Add schedule icond
     }
     
     func viewForHomeScreen() -> UIView? {
@@ -74,8 +74,8 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     }
     
     func initialViewController() -> UIViewController {
-        let storyboard = UIStoryboard(name: "Directory_iPhone", bundle: Bundle(for: type(of: self)))
-        return storyboard.instantiateInitialViewController()!
+        let storyboard = UIStoryboard(name: "Schedule_iPhone", bundle: Bundle(for: type(of: self)))
+        return storyboard.instantiateInitialViewController()! // TODO: Add Schedule Storyboard item
     }
     
     func shouldNavigateToModule() -> Bool {

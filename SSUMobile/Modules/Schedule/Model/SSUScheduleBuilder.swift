@@ -43,42 +43,54 @@ class SSUScheduleBuilder: SSUMoonlightBuilder {
         static let workoadFactor = "Workoad Factor"
     }
     
-//    static func event(withID id: Int, inContext: NSManagedObjectContext) -> SSUCourse? {
-//        if id <= 0 {
-//            SSULogging.logError("Received invalid event id \(id)")
-//            return nil
-//        }
-//        
-//        let obj = self.object(withEntityName: "SSUCourse", id: id, context: inContext) as? SSUCourse
-//        // Here we don't know if this is a new object or one that already existed, so make sure it has an id
-//        
-//        obj?.id = Int32(id)
-//        
-//        return obj
-//    }
+    static func event(withID id: Int, inContext: NSManagedObjectContext) -> SSUCourse? {
+        if id <= 0 {
+            SSULogging.logError("Received invalid event id \(id)")
+            return nil
+        }
+        
+        let obj = self.object(withEntityName: "SSUCourse", id: id, context: inContext) as? SSUCourse
+        // Here we don't know if this is a new object or one that already existed, so make sure it has an id
+        
+        obj?.classNbr = Int16(id)
+        
+        return obj
+    }
     
     override func build(_ results: Any!) {
         SSULogging.logDebug("Building events")
-        let json = JSON(results)
+        var json : JSON?
         
-        for entry in json.arrayValue {
+        if let path = Bundle.main.path(forResource: "sample", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                let jsonObj = JSON(data: data)
+                if jsonObj != JSON.null {
+                    print("jsonData:\(jsonObj)")
+                    json = jsonObj
+                } else {
+                    print("Could not get json from file, make sure that file contains valid json.")
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        } else {
+            print("Invalid filename/path.")
+        }
+
+        
+        for entry in (json?.arrayValue)! {
             let mode = self.mode(fromJSONData: entry.dictionaryObject ?? [:])
-            guard let event = SSUCalendarBuilder.event(withID: entry[Keys.id].intValue, inContext: self.context) else {
-                SSULogging.logError("Unable to retrieve or create Event with id: \(entry[Keys.id].intValue)")
+            guard let event = SSUScheduleBuilder.event(withID: entry[Keys.classNbr].intValue, inContext: self.context) else {
+                SSULogging.logError("Unable to retrieve or create Event with id: \(entry[Keys.classNbr].intValue)")
                 return
             }
             if mode == .deleted {
                 context.delete(event)
                 continue
             }
-            
-            event.startDate = dateFormatter.date(from: entry[Keys.startDate].stringValue)
-            event.endDate = dateFormatter.date(from: entry[Keys.endDate].stringValue)
-            event.title = entry[Keys.title].string
-            event.organization = entry[Keys.organization].string
-            event.category = entry[Keys.category].string
-            event.location = entry[Keys.location].string
-            event.summary = entry[Keys.summary].string
+            event.classNbr = Int16(entry[Keys.classNbr].intValue)
+            SSULogging.log(String(event.classNbr))
         }
         saveContext()
         SSULogging.logDebug("Finish building events")
