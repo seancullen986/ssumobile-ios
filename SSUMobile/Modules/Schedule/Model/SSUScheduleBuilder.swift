@@ -48,7 +48,7 @@ class SSUScheduleBuilder: SSUMoonlightBuilder {
             SSULogging.logError("Received invalid event id \(id)")
             return nil
         }
-        
+        SSULogging.log("ScheduleBuilder:event -- EventID  \(id) is valid")
         let obj = self.object(withEntityName: "SSUCourse", id: id, context: inContext) as? SSUCourse
         // Here we don't know if this is a new object or one that already existed, so make sure it has an id
         
@@ -78,9 +78,14 @@ class SSUScheduleBuilder: SSUMoonlightBuilder {
             print("Invalid filename/path.")
         }
 
-        
+        var val = 0
         for entry in (json?.arrayValue)! {
             let mode = self.mode(fromJSONData: entry.dictionaryObject ?? [:])
+            val += 1
+            SSULogging.log("Event id = \(entry[Keys.classNbr])")
+            if (self.context == nil) {
+                SSULogging.log("Context is NIL")
+            }
             guard let event = SSUScheduleBuilder.event(withID: entry[Keys.classNbr].intValue, inContext: self.context) else {
                 SSULogging.logError("Unable to retrieve or create Event with id: \(entry[Keys.classNbr].intValue)")
                 return

@@ -66,7 +66,7 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     // MARK: SSUModuleUI
     
     func imageForHomeScreen() -> UIImage? {
-        return UIImage(named: "schedule_icon") // TODO: Add schedule icond
+        return UIImage(named: "calendar_icon") // TODO: Add schedule icond
     }
     
     func viewForHomeScreen() -> UIView? {
