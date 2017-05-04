@@ -24,7 +24,7 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     }
     
     func setup() {
-        setupCoreData(modelName: "Schedule", storeName: "Schedule")
+        setupCoreData(modelName: "Catalog", storeName: "Schedule")
     }
     
 //    func updateData(_ completion: (() -> Void)? = nil) {
@@ -39,13 +39,13 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     
     func updateClasses(completion: (() -> Void)? = nil) {
 //        let date = SSUConfiguration.sharedInstance().date(forKey:SSUScheduleClassesUpdatedDateKey)
-        let lastUpdate = SSUConfiguration.sharedInstance().scheduleLastUpdate
-          SSUMoonlightCommunicator.getJSONFromPath("schedule/classes", since:lastUpdate) { (response, json, error) in   // update JSON path
+        //let lastUpdate = SSUConfiguration.sharedInstance().scheduleLastUpdate
+          SSUMoonlightCommunicator.getJSONFromPath("catalog/course") { (response, json, error) in   // update JSON path
             if let error = error {
                 SSULogging.logError("Error while attemping to update Schedule Classes: \(error)")
                 completion?()
             } else {
-                SSUConfiguration.sharedInstance().scheduleLastUpdate = Date()
+                //SSUConfiguration.sharedInstance().scheduleLastUpdate = Date()
                 self.build(json: json) {
                     completion?()
                 }
@@ -54,7 +54,7 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     }
 
     private func build(json: Any, completion: (() -> Void)? = nil) {
-        let builder = SSUScheduleBuilder()
+        let builder = SSUCourseBuilder()
         builder.context = backgroundContext
         backgroundContext.perform {
             builder.build(json)
@@ -66,7 +66,7 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     // MARK: SSUModuleUI
     
     func imageForHomeScreen() -> UIImage? {
-        return UIImage(named: "calendar_icon") // TODO: Add schedule icond
+        return UIImage(named: "schedule_icon") // TODO: Add schedule icond
     }
     
     func viewForHomeScreen() -> UIView? {

@@ -9,15 +9,15 @@ import Foundation
 
 extension SSUConfiguration {
     
-    private struct Keys {
-        static let lastUpdate = "ScheduleUpdatedDate"
-    }
-    
-    var scheduleLastUpdate: Date? {
-        get {
-            return date(forKey: Keys.lastUpdate)
-        } set {
-            setDate(newValue, forKey: Keys.lastUpdate)
-        }
-    }
+//    private struct Keys {
+//        static let lastUpdate = "ScheduleUpdatedDate"
+//    }
+//    
+//    var scheduleLastUpdate: Date? {
+//        get {
+//            return date(forKey: Keys.lastUpdate)
+//        } set {
+//            setDate(newValue, forKey: Keys.lastUpdate)
+//        }
+//    }
 }
