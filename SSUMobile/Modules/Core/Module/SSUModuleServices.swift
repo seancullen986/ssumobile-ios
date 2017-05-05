@@ -35,7 +35,8 @@ class SSUModuleServices: NSObject {
             SSUNewsModule.instance,
             SSUMapModule.instance,
             SSUResourcesModule.instance,
-            SSURadioModule.instance
+            SSURadioModule.instance,
+            SSUScheduleModule.instance
         ]
         #if DEBUG
         result.append(SSUDebugModule.instance)
