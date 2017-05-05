@@ -19,7 +19,6 @@ static CGFloat MARGIN = 5.0;
 static NSInteger BLANK_CELL_INDEX = 7;
 
 @interface SSUHomeViewController () <UICollectionViewDelegate,UICollectionViewDataSource, SSUModuleCellDelegate>
-- (IBAction)TESTBTN:(UIButton *)sender;
 
 @property (nonatomic, strong) NSArray * modules;
 @property (nonatomic, strong) id navBarModule;
@@ -217,9 +216,4 @@ static NSInteger BLANK_CELL_INDEX = 7;
     }
 }
 
-- (IBAction)TESTBTN:(UIButton *)sender {
-    SSUScheduleBuilder *something = [[SSUScheduleBuilder alloc]init];
-    
-    [something build:(@"sample.json")];
-}
 @end
