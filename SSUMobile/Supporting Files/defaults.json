@@ -8,6 +8,7 @@
         "campusmap",
         "resources",
         "email",
+        "schedule",
     ],
     
     "edu.sonoma.radio.stream.enabled" : true,

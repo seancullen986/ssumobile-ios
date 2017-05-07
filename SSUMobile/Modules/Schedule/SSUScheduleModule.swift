@@ -24,28 +24,17 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     }
     
     func setup() {
-        setupCoreData(modelName: "Catalog", storeName: "Schedule")
+        setupCoreData(modelName: "SSUCatalog", storeName: "Schedule")
     }
     
-//    func updateData(_ completion: (() -> Void)? = nil) {
-//        SSULogging.logDebug("Update Schedule")
-//        updateSchedule {
-//            self.updateClasses {
-//                completion?()
-//            }
-//        }
-//    }
     
-    
-    func updateClasses(completion: (() -> Void)? = nil) {
-//        let date = SSUConfiguration.sharedInstance().date(forKey:SSUScheduleClassesUpdatedDateKey)
-        //let lastUpdate = SSUConfiguration.sharedInstance().scheduleLastUpdate
-          SSUMoonlightCommunicator.getJSONFromPath("catalog/course") { (response, json, error) in   // update JSON path
+    func updateData(completion: (() -> Void)? = nil) {
+        SSULogging.logDebug("Update Schedule")
+        SSUMoonlightCommunicator.getJSONFromPath("catalog/course") { (response, json, error) in
             if let error = error {
                 SSULogging.logError("Error while attemping to update Schedule Classes: \(error)")
                 completion?()
             } else {
-                //SSUConfiguration.sharedInstance().scheduleLastUpdate = Date()
                 self.build(json: json) {
                     completion?()
                 }
