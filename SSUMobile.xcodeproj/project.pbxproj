@@ -165,8 +165,6 @@
 		826184371EAEC00900F3152D /* SSUConfiguration+Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826184351EAEC00900F3152D /* SSUConfiguration+Schedule.swift */; };
 		826184381EAEC00900F3152D /* SSUScheduleModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826184361EAEC00900F3152D /* SSUScheduleModule.swift */; };
 		8261843E1EAEC01400F3152D /* Schedule.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 826184391EAEC01400F3152D /* Schedule.xcdatamodeld */; };
-		8261843F1EAEC01400F3152D /* SSUCourse+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8261843B1EAEC01400F3152D /* SSUCourse+CoreDataClass.swift */; };
-		826184401EAEC01400F3152D /* SSUCourse+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8261843C1EAEC01400F3152D /* SSUCourse+CoreDataProperties.swift */; };
 		826184411EAEC01400F3152D /* SSUCourseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8261843D1EAEC01400F3152D /* SSUCourseBuilder.swift */; };
 		AAEF4F5B18FFAB6C0006276D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEF4F5A18FFAB6C0006276D /* QuartzCore.framework */; };
 		AAEF4FAB1900AC130006276D /* SSUOutdoorMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF4FAA1900AC130006276D /* SSUOutdoorMapViewController.m */; };
@@ -192,6 +190,10 @@
 		DB2A646D1EBE9593008726BB /* SSUCourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */; };
 		DB2A64701EBE97D5008726BB /* SSUColorsFromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646F1EBE97D5008726BB /* SSUColorsFromHex.swift */; };
 		DB2A64721EBE9AD4008726BB /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB2A64711EBE9AD4008726BB /* Schedule.storyboard */; };
+		DB2A64771EBEA2B3008726BB /* SSUCourse+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64731EBEA2B3008726BB /* SSUCourse+CoreDataClass.swift */; };
+		DB2A64781EBEA2B3008726BB /* SSUCourse+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64741EBEA2B3008726BB /* SSUCourse+CoreDataProperties.swift */; };
+		DB2A64791EBEA2B3008726BB /* SSUSchedule+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64751EBEA2B3008726BB /* SSUSchedule+CoreDataClass.swift */; };
+		DB2A647A1EBEA2B3008726BB /* SSUSchedule+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64761EBEA2B3008726BB /* SSUSchedule+CoreDataProperties.swift */; };
 		FB0C64796E6A63FF0E4176E4 /* Pods_SSUMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFEFE76E20960FEACAD3748 /* Pods_SSUMobileTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -475,8 +477,6 @@
 		826184351EAEC00900F3152D /* SSUConfiguration+Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUConfiguration+Schedule.swift"; path = "Schedule/SSUConfiguration+Schedule.swift"; sourceTree = "<group>"; };
 		826184361EAEC00900F3152D /* SSUScheduleModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUScheduleModule.swift; path = Schedule/SSUScheduleModule.swift; sourceTree = "<group>"; };
 		8261843A1EAEC01400F3152D /* Schedule.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schedule.xcdatamodel; sourceTree = "<group>"; };
-		8261843B1EAEC01400F3152D /* SSUCourse+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUCourse+CoreDataClass.swift"; path = "Schedule/Model/SSUCourse+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8261843C1EAEC01400F3152D /* SSUCourse+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUCourse+CoreDataProperties.swift"; path = "Schedule/Model/SSUCourse+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8261843D1EAEC01400F3152D /* SSUCourseBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUCourseBuilder.swift; path = Schedule/Model/SSUCourseBuilder.swift; sourceTree = "<group>"; };
 		85EEDAB3A3C7CAAD14070BF5 /* Pods-SSUMobile-SSUMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSUMobile-SSUMobileTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SSUMobile-SSUMobileTests/Pods-SSUMobile-SSUMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA72986C1905D17500A63F99 /* Path_TuscanyToSalazar.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Path_TuscanyToSalazar.gpx; sourceTree = "<group>"; };
@@ -516,11 +516,15 @@
 		C4FBF74416BB8C5C00BE95E3 /* News.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = News.xcdatamodel; sourceTree = "<group>"; };
 		CFFEFE76E20960FEACAD3748 /* Pods_SSUMobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSUMobileTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DC4BB874ADB0462526968D /* Pods-SSUMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSUMobileTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SSUMobileTests/Pods-SSUMobileTests.release.xcconfig"; sourceTree = "<group>"; };
-		DB2A64681EBE9364008726BB /* SSUScheduleTableViewContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSUScheduleTableViewContorller.swift; sourceTree = "<group>"; };
-		DB2A646A1EBE9480008726BB /* SSUCourseViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSUCourseViewCell.swift; sourceTree = "<group>"; };
-		DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSUCourseDetailViewController.swift; sourceTree = "<group>"; };
-		DB2A646F1EBE97D5008726BB /* SSUColorsFromHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSUColorsFromHex.swift; sourceTree = "<group>"; };
-		DB2A64711EBE9AD4008726BB /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
+		DB2A64681EBE9364008726BB /* SSUScheduleTableViewContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUScheduleTableViewContorller.swift; path = Schedule/Views/SSUScheduleTableViewContorller.swift; sourceTree = "<group>"; };
+		DB2A646A1EBE9480008726BB /* SSUCourseViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUCourseViewCell.swift; path = Schedule/Views/SSUCourseViewCell.swift; sourceTree = "<group>"; };
+		DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUCourseDetailViewController.swift; path = Schedule/Views/SSUCourseDetailViewController.swift; sourceTree = "<group>"; };
+		DB2A646F1EBE97D5008726BB /* SSUColorsFromHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUColorsFromHex.swift; path = Schedule/Utils/SSUColorsFromHex.swift; sourceTree = "<group>"; };
+		DB2A64711EBE9AD4008726BB /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Schedule.storyboard; path = Schedule/Views/Schedule.storyboard; sourceTree = "<group>"; };
+		DB2A64731EBEA2B3008726BB /* SSUCourse+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUCourse+CoreDataClass.swift"; path = "Schedule/Model/Classes/SSUCourse+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DB2A64741EBEA2B3008726BB /* SSUCourse+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUCourse+CoreDataProperties.swift"; path = "Schedule/Model/Classes/SSUCourse+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DB2A64751EBEA2B3008726BB /* SSUSchedule+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUSchedule+CoreDataClass.swift"; path = "Schedule/Model/Classes/SSUSchedule+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DB2A64761EBEA2B3008726BB /* SSUSchedule+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUSchedule+CoreDataProperties.swift"; path = "Schedule/Model/Classes/SSUSchedule+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1509,13 +1513,16 @@
 				DB2A646F1EBE97D5008726BB /* SSUColorsFromHex.swift */,
 			);
 			name = Utils;
+			path = Schedule/Utils;
 			sourceTree = "<group>";
 		};
 		DBBED2AD1EBA9813003C8D16 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8261843B1EAEC01400F3152D /* SSUCourse+CoreDataClass.swift */,
-				8261843C1EAEC01400F3152D /* SSUCourse+CoreDataProperties.swift */,
+				DB2A64731EBEA2B3008726BB /* SSUCourse+CoreDataClass.swift */,
+				DB2A64741EBEA2B3008726BB /* SSUCourse+CoreDataProperties.swift */,
+				DB2A64751EBEA2B3008726BB /* SSUSchedule+CoreDataClass.swift */,
+				DB2A64761EBEA2B3008726BB /* SSUSchedule+CoreDataProperties.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1802,13 +1809,13 @@
 				0711E8141E8855B400F9ACDE /* SSUNewsObject+CoreDataClass.swift in Sources */,
 				0785A18E1E8F84D8007D16D4 /* SSUEvent+CoreDataClass.swift in Sources */,
 				0785A1A01E94AB4E007D16D4 /* UIColorExtension.swift in Sources */,
+				DB2A64781EBEA2B3008726BB /* SSUCourse+CoreDataProperties.swift in Sources */,
 				0733E0F81E57F99300C85A53 /* SSUCommunicator.m in Sources */,
 				0733E1041E57F99300C85A53 /* SSUDetailTableViewController.m in Sources */,
 				0733E1051E57F99300C85A53 /* SSUGlobalNavigationController.m in Sources */,
 				074F53101B70807B00F97BCA /* SSUSchoolTableViewCell.m in Sources */,
 				0711E7F61E8752A900F9ACDE /* SSUAboutModule.swift in Sources */,
 				074D135A1BA703B20002899F /* Directory.xcdatamodeld in Sources */,
-				826184401EAEC01400F3152D /* SSUCourse+CoreDataProperties.swift in Sources */,
 				07689530198A165600C233B3 /* SSUHomeViewController.m in Sources */,
 				C4FBF74516BB8C5C00BE95E3 /* News.xcdatamodeld in Sources */,
 				0711E8161E8855B400F9ACDE /* SSUNewsObject+CoreDataProperties.swift in Sources */,
@@ -1817,7 +1824,6 @@
 				07C2FE0E19C6C5120016349C /* SSURadioConstants.m in Sources */,
 				07DFB6CB1B94511A00014CD0 /* SSUDepartment+properties.m in Sources */,
 				826184371EAEC00900F3152D /* SSUConfiguration+Schedule.swift in Sources */,
-				8261843F1EAEC01400F3152D /* SSUCourse+CoreDataClass.swift in Sources */,
 				78A8E15016C74BDE00898596 /* SSUDirectoryViewController.m in Sources */,
 				07F54F631E887A0400D24EA7 /* SSUNewsArticleTableViewCell.swift in Sources */,
 				0733E1021E57F99300C85A53 /* SSUCoreDataTableViewController.m in Sources */,
@@ -1863,6 +1869,7 @@
 				0785A1871E8F72E8007D16D4 /* SSUConfiguration+Calendar.swift in Sources */,
 				07E8A21F1D6428C3007246A8 /* SSUDirectorySpotlightUtilities.m in Sources */,
 				0711E8101E8855B400F9ACDE /* SSUArticle+CoreDataClass.swift in Sources */,
+				DB2A647A1EBEA2B3008726BB /* SSUSchedule+CoreDataProperties.swift in Sources */,
 				0711E8071E884D2C00F9ACDE /* SSUConfiguration+News.swift in Sources */,
 				0711E80A1E88520900F9ACDE /* SSUConfiguration+About.swift in Sources */,
 				0785A1AF1E999CE8007D16D4 /* SSUEmailModule.swift in Sources */,
@@ -1878,6 +1885,7 @@
 				0785A19E1E94AA0D007D16D4 /* SSUCollectionCellSeparatorView.swift in Sources */,
 				8261843E1EAEC01400F3152D /* Schedule.xcdatamodeld in Sources */,
 				7801C3D316E8233900119B63 /* SSUMapLocation.m in Sources */,
+				DB2A64791EBEA2B3008726BB /* SSUSchedule+CoreDataClass.swift in Sources */,
 				0785A1AD1E9889C3007D16D4 /* SSUAppDelegate.swift in Sources */,
 				0785A3BE1A1D99A30088193E /* SSUResourcesConstants.m in Sources */,
 				0785A3B81A1D988B0088193E /* SSUResourcesSection.m in Sources */,
@@ -1892,6 +1900,7 @@
 				DB2A64701EBE97D5008726BB /* SSUColorsFromHex.swift in Sources */,
 				826184381EAEC00900F3152D /* SSUScheduleModule.swift in Sources */,
 				07A593BE1E9B1B0400D69DBB /* SSUDirectoryModule.swift in Sources */,
+				DB2A64771EBEA2B3008726BB /* SSUCourse+CoreDataClass.swift in Sources */,
 				78A190BD171B3D0600D8768C /* SSUPointsBuilder.m in Sources */,
 				0733E1071E57F99300C85A53 /* SSUSelectionController.m in Sources */,
 				0785A1A71E975EB5007D16D4 /* SSUModule.swift in Sources */,
