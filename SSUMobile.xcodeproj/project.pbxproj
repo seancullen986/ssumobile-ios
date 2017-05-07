@@ -187,6 +187,11 @@
 		C4A7BE6316BA139100B919F0 /* SSUDirectoryConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A7BE6216BA139000B919F0 /* SSUDirectoryConstants.m */; };
 		C4A7BE6716BA241900B919F0 /* SSUBuildingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A7BE6616BA241900B919F0 /* SSUBuildingViewController.m */; };
 		C4FBF74516BB8C5C00BE95E3 /* News.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4FBF74316BB8C5C00BE95E3 /* News.xcdatamodeld */; };
+		DB2A64691EBE9364008726BB /* SSUScheduleTableViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64681EBE9364008726BB /* SSUScheduleTableViewContorller.swift */; };
+		DB2A646B1EBE9480008726BB /* SSUCourseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646A1EBE9480008726BB /* SSUCourseViewCell.swift */; };
+		DB2A646D1EBE9593008726BB /* SSUCourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */; };
+		DB2A64701EBE97D5008726BB /* SSUColorsFromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646F1EBE97D5008726BB /* SSUColorsFromHex.swift */; };
+		DB2A64721EBE9AD4008726BB /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB2A64711EBE9AD4008726BB /* Schedule.storyboard */; };
 		FB0C64796E6A63FF0E4176E4 /* Pods_SSUMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFEFE76E20960FEACAD3748 /* Pods_SSUMobileTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -511,6 +516,11 @@
 		C4FBF74416BB8C5C00BE95E3 /* News.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = News.xcdatamodel; sourceTree = "<group>"; };
 		CFFEFE76E20960FEACAD3748 /* Pods_SSUMobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSUMobileTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DC4BB874ADB0462526968D /* Pods-SSUMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSUMobileTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SSUMobileTests/Pods-SSUMobileTests.release.xcconfig"; sourceTree = "<group>"; };
+		DB2A64681EBE9364008726BB /* SSUScheduleTableViewContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSUScheduleTableViewContorller.swift; sourceTree = "<group>"; };
+		DB2A646A1EBE9480008726BB /* SSUCourseViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSUCourseViewCell.swift; sourceTree = "<group>"; };
+		DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSUCourseDetailViewController.swift; sourceTree = "<group>"; };
+		DB2A646F1EBE97D5008726BB /* SSUColorsFromHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSUColorsFromHex.swift; sourceTree = "<group>"; };
+		DB2A64711EBE9AD4008726BB /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1155,11 +1165,12 @@
 		825C072E1EA82FAA004ED9DA /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				DBBED2AF1EBA986D003C8D16 /* Resourses */,
 				826184351EAEC00900F3152D /* SSUConfiguration+Schedule.swift */,
 				826184361EAEC00900F3152D /* SSUScheduleModule.swift */,
 				826184271EAEBEDE00F3152D /* Model */,
 				DBBED2AE1EBA985A003C8D16 /* Views */,
+				DBBED2AF1EBA986D003C8D16 /* Resourses */,
+				DB2A646E1EBE96C1008726BB /* Utils */,
 			);
 			name = Schedule;
 			sourceTree = "<group>";
@@ -1492,6 +1503,14 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		DB2A646E1EBE96C1008726BB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DB2A646F1EBE97D5008726BB /* SSUColorsFromHex.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		DBBED2AD1EBA9813003C8D16 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1504,6 +1523,10 @@
 		DBBED2AE1EBA985A003C8D16 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DB2A64681EBE9364008726BB /* SSUScheduleTableViewContorller.swift */,
+				DB2A646A1EBE9480008726BB /* SSUCourseViewCell.swift */,
+				DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */,
+				DB2A64711EBE9AD4008726BB /* Schedule.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1635,6 +1658,7 @@
 				0711E8021E878C1F00F9ACDE /* Launch Screen.storyboard in Resources */,
 				07FD090B1BA084B0005C38DD /* News.xcassets in Resources */,
 				0733E1091E57F99300C85A53 /* SSUWebViewController.storyboard in Resources */,
+				DB2A64721EBE9AD4008726BB /* Schedule.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1815,6 +1839,7 @@
 				0785A1A91E976752007D16D4 /* SSUCoreDataModuleBase.swift in Sources */,
 				0711E8191E886D5500F9ACDE /* SSUNewsBuilder.swift in Sources */,
 				785DD35716E688D1009188CC /* SSUOutdoorMapConstants.m in Sources */,
+				DB2A646B1EBE9480008726BB /* SSUCourseViewCell.swift in Sources */,
 				7841E5FD16E6C589007A8F95 /* Map.xcdatamodeld in Sources */,
 				0711E7FB1E87691100F9ACDE /* SSUFeedbackViewController.swift in Sources */,
 				072AF9A91EA0898C00AE5BDF /* SSUEmailConstants.m in Sources */,
@@ -1833,6 +1858,7 @@
 				0760DC331A5FD060001D04F9 /* SSUDirectoryDetailController.m in Sources */,
 				0733E0F91E57F99300C85A53 /* SSUMoonlightCommunicator.m in Sources */,
 				0708BA6A1EA09B1D00D67C85 /* SSUDebugModule.swift in Sources */,
+				DB2A646D1EBE9593008726BB /* SSUCourseDetailViewController.swift in Sources */,
 				78A5EDEA16E6E5D30078FBB0 /* BuildingPerimeter+properties.m in Sources */,
 				0785A1871E8F72E8007D16D4 /* SSUConfiguration+Calendar.swift in Sources */,
 				07E8A21F1D6428C3007246A8 /* SSUDirectorySpotlightUtilities.m in Sources */,
@@ -1860,8 +1886,10 @@
 				074D135E1BA703FB0002899F /* Calendar.xcdatamodeld in Sources */,
 				0711E8121E8855B400F9ACDE /* SSUArticle+CoreDataProperties.swift in Sources */,
 				78A190B61717A0AA00D8768C /* SSUMapPoint.m in Sources */,
+				DB2A64691EBE9364008726BB /* SSUScheduleTableViewContorller.swift in Sources */,
 				301B08B71EB1583000C0769E /* SSURadioCalendarViewController.m in Sources */,
 				78A190B91718ADCD00D8768C /* SSUMapPolygon.m in Sources */,
+				DB2A64701EBE97D5008726BB /* SSUColorsFromHex.swift in Sources */,
 				826184381EAEC00900F3152D /* SSUScheduleModule.swift in Sources */,
 				07A593BE1E9B1B0400D69DBB /* SSUDirectoryModule.swift in Sources */,
 				78A190BD171B3D0600D8768C /* SSUPointsBuilder.m in Sources */,
