@@ -88,7 +88,7 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
             course.min_units = entry[Keys.min_units].int16 ?? 0
             course.class_type = entry[Keys.class_type].string
             course.designation = entry[Keys.designation].string
-            course.metting_pattern = entry[Keys.metting_pattern].string
+//            course.metting_pattern = entry[Keys.metting_pattern].string
             course.instructor_id = entry[Keys.instructor_id].int32 ?? 0
             course.first_name =  entry[Keys.first_name].string
             course.last_name = entry[Keys.last_name].string
@@ -100,9 +100,9 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
             course.facility_id = entry[Keys.facility_id].string
             course.cs_number = entry[Keys.cs_number].int16 ?? 0
             course.wtu = entry[Keys.wtu].int16 ?? 0
-            course.k_kactor = entry[Keys.k_factor].int16 ?? 0
+//            course.k_kactor = entry[Keys.k_factor].int16 ?? 0
             course.s_factor = entry[Keys.s_factor].int16 ?? 0
-            course.workoad_factor = entry[Keys.workoad_factor].string
+//            course.workoad_factor = entry[Keys.workoad_factor].string
             
             SSULogging.log(String(course.id))
         }

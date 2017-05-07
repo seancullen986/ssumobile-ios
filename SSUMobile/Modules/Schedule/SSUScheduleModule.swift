@@ -74,7 +74,7 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     }
     
     func initialViewController() -> UIViewController {
-        let storyboard = UIStoryboard(name: "Schedule_iPhone", bundle: Bundle(for: type(of: self)))
+        let storyboard = UIStoryboard(name: "Schedule", bundle: Bundle(for: type(of: self)))
         return storyboard.instantiateInitialViewController()! // TODO: Add Schedule Storyboard item
     }
     

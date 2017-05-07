@@ -194,6 +194,7 @@
 		DB2A64781EBEA2B3008726BB /* SSUCourse+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64741EBEA2B3008726BB /* SSUCourse+CoreDataProperties.swift */; };
 		DB2A64791EBEA2B3008726BB /* SSUSchedule+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64751EBEA2B3008726BB /* SSUSchedule+CoreDataClass.swift */; };
 		DB2A647A1EBEA2B3008726BB /* SSUSchedule+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64761EBEA2B3008726BB /* SSUSchedule+CoreDataProperties.swift */; };
+		DB2A647C1EBEA541008726BB /* ClassSchedule.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB2A647B1EBEA541008726BB /* ClassSchedule.xcassets */; };
 		FB0C64796E6A63FF0E4176E4 /* Pods_SSUMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFEFE76E20960FEACAD3748 /* Pods_SSUMobileTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -519,12 +520,13 @@
 		DB2A64681EBE9364008726BB /* SSUScheduleTableViewContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUScheduleTableViewContorller.swift; path = Schedule/Views/SSUScheduleTableViewContorller.swift; sourceTree = "<group>"; };
 		DB2A646A1EBE9480008726BB /* SSUCourseViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUCourseViewCell.swift; path = Schedule/Views/SSUCourseViewCell.swift; sourceTree = "<group>"; };
 		DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUCourseDetailViewController.swift; path = Schedule/Views/SSUCourseDetailViewController.swift; sourceTree = "<group>"; };
-		DB2A646F1EBE97D5008726BB /* SSUColorsFromHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUColorsFromHex.swift; path = Schedule/Utils/SSUColorsFromHex.swift; sourceTree = "<group>"; };
+		DB2A646F1EBE97D5008726BB /* SSUColorsFromHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSUColorsFromHex.swift; sourceTree = "<group>"; };
 		DB2A64711EBE9AD4008726BB /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Schedule.storyboard; path = Schedule/Views/Schedule.storyboard; sourceTree = "<group>"; };
 		DB2A64731EBEA2B3008726BB /* SSUCourse+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUCourse+CoreDataClass.swift"; path = "Schedule/Model/Classes/SSUCourse+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DB2A64741EBEA2B3008726BB /* SSUCourse+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUCourse+CoreDataProperties.swift"; path = "Schedule/Model/Classes/SSUCourse+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DB2A64751EBEA2B3008726BB /* SSUSchedule+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUSchedule+CoreDataClass.swift"; path = "Schedule/Model/Classes/SSUSchedule+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DB2A64761EBEA2B3008726BB /* SSUSchedule+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUSchedule+CoreDataProperties.swift"; path = "Schedule/Model/Classes/SSUSchedule+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DB2A647B1EBEA541008726BB /* ClassSchedule.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ClassSchedule.xcassets; path = Schedule/Resources/ClassSchedule.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1541,6 +1543,7 @@
 		DBBED2AF1EBA986D003C8D16 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				DB2A647B1EBEA541008726BB /* ClassSchedule.xcassets */,
 			);
 			name = Resourses;
 			sourceTree = "<group>";
@@ -1660,6 +1663,7 @@
 				78FE792816C9D04500626462 /* Settings.bundle in Resources */,
 				784315F516D1DF2900B8552F /* Map_iPhone.storyboard in Resources */,
 				07FD09081BA08448005C38DD /* Radio.xcassets in Resources */,
+				DB2A647C1EBEA541008726BB /* ClassSchedule.xcassets in Resources */,
 				07FD08FD1BA02EBE005C38DD /* Directory.xcassets in Resources */,
 				0708BA6C1EA0A0CD00D67C85 /* Debug.storyboard in Resources */,
 				0711E8021E878C1F00F9ACDE /* Launch Screen.storyboard in Resources */,
@@ -2069,10 +2073,6 @@
 					"-all_load",
 					"$(inherited)",
 				);
-				"OTHER_LDFLAGS[arch=*]" = (
-					"-all_load",
-					"$(inherited)",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SSU.SSUMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2111,10 +2111,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
-					"-all_load",
-					"$(inherited)",
-				);
-				"OTHER_LDFLAGS[arch=*]" = (
 					"-all_load",
 					"$(inherited)",
 				);
