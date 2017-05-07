@@ -24,7 +24,7 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     }
     
     func setup() {
-        setupCoreData(modelName: "SSUCatalog", storeName: "Schedule")
+        setupCoreData(modelName: "Schedule", storeName: "Schedule")
     }
     
     
