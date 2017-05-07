@@ -80,16 +80,16 @@ class SSUScheduleTableViewController: UITableViewController  {
     }
     
     private func refresh() {
-        SSUScheduleModule.instance.updateData(completion: {
+        SSUScheduleModule.instance.updateData({
             self.loadSchedule()
         })
     }
     
     private func loadSchedule() {
-        let fetchRequest: NSFetchRequest<SSUCourse> = SSUCourse.fetchRequest()
+        let fetchRequest: NSFetchRequest<SSUSchedule> = SSUSchedule.fetchRequest()
         
         do {
-            schedule = try context.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [SSUSchedule]
+            schedule = try context.fetch(fetchRequest)
         } catch {
             SSULogging.logError("Error fetching schedule: \(error)")
             schedule = []
@@ -144,11 +144,24 @@ class SSUScheduleTableViewController: UITableViewController  {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return (sects?.count)!
+        if let sections = sects {
+            if( sections.count > 0 ){
+                return sections.count
+            }
+        }
+    
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (sects?[section].count)!
+        if let sections = sects {
+            let numberOfSections = sections[section].count
+            if( numberOfSections > 0 ){
+                return numberOfSections
+            }
+        }
+        
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

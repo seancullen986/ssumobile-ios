@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
+final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     
     @objc(sharedInstance)
     static let instance = SSUScheduleModule()
@@ -28,9 +28,15 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     }
     
     
-    func updateData(completion: (() -> Void)? = nil) {
-        SSULogging.logDebug("Update Schedule")
-        SSUMoonlightCommunicator.getJSONFromPath("catalog/course") { (response, json, error) in
+    func updateData(_ completion: (() -> Void)? = nil) {
+        SSULogging.logDebug("Update Catalog")
+        self.updateCatalog {
+            completion?()
+        }
+    }
+    
+    func updateCatalog(completion: (() -> Void)? = nil) {
+            SSUMoonlightCommunicator.getJSONFromPath("catalog/course") { (response, json, error) in
             if let error = error {
                 SSULogging.logError("Error while attemping to update Schedule Classes: \(error)")
                 completion?()
@@ -55,7 +61,7 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     // MARK: SSUModuleUI
     
     func imageForHomeScreen() -> UIImage? {
-        return UIImage(named: "schedule_icon") // TODO: Add schedule icond
+        return UIImage(named: "schedule_icon") 
     }
     
     func viewForHomeScreen() -> UIView? {
@@ -64,8 +70,7 @@ class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     
     func initialViewController() -> UIViewController {
         let storyboard = UIStoryboard(name: "Schedule", bundle: Bundle(for: type(of: self)))
-        return storyboard.instantiateInitialViewController()! // TODO: Add Schedule Storyboard item
-    }
+        return storyboard.instantiateInitialViewController()!     }
     
     func shouldNavigateToModule() -> Bool {
         return true
