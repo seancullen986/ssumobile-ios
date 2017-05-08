@@ -10,3 +10,4 @@ extern NSString * const SSURadioStreamURLKey;
 extern NSString * const SSURadioStreamEnabledKey;
 extern NSString * const SSURadioStreamDisabledMessageKey;
 extern NSString * const SSURadioWebsiteURLKey;
+extern NSString * const SSURadioScheduleURLKey;

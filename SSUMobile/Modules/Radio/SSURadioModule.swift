@@ -14,6 +14,14 @@ class SSURadioModule: SSUModuleBase, SSUModuleUI {
     @objc(sharedInstance)
     static let instance = SSURadioModule()
     
+    @objc
+    var radioScheduleURL: URL? {
+        if let urlString = SSUConfiguration.sharedInstance().string(forKey: SSURadioScheduleURLKey) {
+            return URL(string: urlString)
+        }
+        return nil
+    }
+    
     // MARK: SSUModule
     
     var title: String {

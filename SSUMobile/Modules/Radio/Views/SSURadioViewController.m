@@ -177,7 +177,8 @@ static NSString * SSURadioWebPageURL = @"http://www.sonomastateradio.com";
 {
     if ([[segue identifier] isEqualToString:@"radioToCalendar"]) {
         SSURadioCalendarViewController *vc = [segue destinationViewController];
-      }}
+    }
+}
 
 #pragma mark -
 #pragma mark - IBActions

@@ -1,5 +1,5 @@
 //
-//  UIViewController+SSURadioCalendarViewController.m
+//  SSURadioCalendarViewController.m
 //  SSUMobile
 //
 //  Created by DANIEL THOMPSON on 4/26/17.
@@ -7,11 +7,18 @@
 //
 
 #import "SSURadioCalendarViewController.h"
-@import AVFoundation;
-@import SafariServices;
+#import "SSUCommunicator.h"
+#import "SSULogging.h"
+#import "SSUMobile-Swift.h"
+@import WebKit;
+@import Masonry;
+@import MBProgressHUD;
 
 
-@interface SSURadioCalendarViewController()
+@interface SSURadioCalendarViewController() <WKNavigationDelegate>
+
+@property (nonatomic) WKWebView * webView;
+
 @end
 
 /*
@@ -23,16 +30,44 @@
 
 @implementation SSURadioCalendarViewController
 
-- (void)viewDidLoad
-{
-   [super viewDidLoad];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"KSUN Schedule";
    
-    //Load the webview.
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.sonomastateradio.com/copy-of-schedule-1"]]];
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+    NSURL * url = [[SSURadioModule sharedInstance] radioScheduleURL];
+    if (url == nil) {
+        SSULogError(@"Failed to load radio schedule from settings, using fallback value");
+        url = [NSURL URLWithString:@"http://www.sonomastateradio.com/copy-of-schedule-1"];
+    }
+    webView.navigationDelegate = self;
+    [webView loadRequest:[NSURLRequest requestWithURL:url]];
     [self.view addSubview:webView];
-    
+    [webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    self.webView = webView;
+}
 
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.webView.isLoading) {
+        [self.webView stopLoading];
+        [SSUCommunicator setNetworkActivityIndicatorVisible:NO];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }
+}
+
+#pragma mark - WKNavigationDelegate
+
+- (void) webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    [SSUCommunicator setNetworkActivityIndicatorVisible:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+- (void) webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    [SSUCommunicator setNetworkActivityIndicatorVisible:NO];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 
