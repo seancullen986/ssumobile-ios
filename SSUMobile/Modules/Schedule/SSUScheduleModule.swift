@@ -49,14 +49,14 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
         }
     }
     
-    private func fetchNext(url: URL, completion: (result: Any) -> ()) {
+    private func fetchNext(url: URL, completion: @escaping (_ result: Any?) -> ()) {
         
         SSUCommunicator.getJSONFrom(url) { (response, json, error) in
             if let error = error {
                 SSULogging.logError("Error while attemping to update Schedule Classes: \(error)")
-                
+                completion(nil)
             } else {
-                return completion(result: json)
+                completion(json)
             }
         }
 
@@ -72,20 +72,18 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
         builder.context = backgroundContext
         backgroundContext.perform {
 
-            var first = builder.fetchComplete(json)
-            if( first != "") {
-
-                self.fetchNext(url: next, completion: { (js) in
-                    
-                    if let more = js as? Any{
-                        if let next = builder.fetchComplete(more) as? NSURL {
-                            
-                        }
+            var next = builder.fetchComplete(json)
+            if( next != "") {
+                repeat {
+                    if let url = URL(string: next) {
+                        self.fetchNext(url: url, completion: { (result) in
+                            if let more = result {
+                                next = builder.fetchComplete(more)
+                            } else { next = "" }
+                        })
                     }
-                })
-   
 
-                
+                } while(next != "")
             } else {
                 self.build(json: builder.getResults() as Any) {
                     completion?()
