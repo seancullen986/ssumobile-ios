@@ -47,6 +47,8 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
     var jsonResults: JSON?
     var js: Any?
     var arrOJ: [[JSON]] = []
+    //var arrOJ: [Dictionary<String, Any>] = []
+    //var arrOJ: JSON?
     
     static func course(withID id: Int, inContext: NSManagedObjectContext) -> SSUCourse? {
         if id <= 0 {
@@ -63,74 +65,80 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         return obj
     }
     
-    func fetchComplete(_ results: Any) -> String {
+    func fetchComplete(_ results: Any) -> (String, Any?) {
         let data = JSON(results)
         if let next = data.dictionaryValue["next"]?.string {
-            if( next == "null" ) { return "" }
-            if let arr = data.dictionaryValue["results"]?.array {
-                arrOJ.append(arr)
-
-                return next
+            if( next == "null" ) { return ("", nil)}
+            if let arr = data.dictionaryValue["results"]?.arrayValue {
+                //arrOJ.append(arr)
+                
+                return (next, arr)
             }
             
         }
         
-        return ""
+        return ("", nil)
     }
     
     func getResults() -> Any? {
-        return jsonResults
+        return arrOJ
     }
     
     override func build(_ results: Any!) {
         SSULogging.logDebug("Building events")
-        let json = JSON(jsonResults!)
-    
-        for entry in (json.arrayValue) {
-            let mode = self.mode(fromJSONData: entry.dictionaryObject ?? [:])
-            
-            SSULogging.log("Event id = \(entry[Keys.id])")
+        let arr = JSON(results).arrayValue
+        
+        for page in arr {
+            let data = JSON(page).array!
+            for entry in (JSON(data).arrayValue) {
+                let mode = self.mode(fromJSONData: entry.dictionaryObject ?? [:])
+                
+                SSULogging.log("Event id = \(entry[Keys.id])")
 
-            guard let course = SSUCourseBuilder.course(withID: entry[Keys.id].intValue, inContext: self.context) else {
-                SSULogging.logError("Unable to retrieve or create Event with id: \(entry[Keys.id].intValue)")
-                return
+                guard let course = SSUCourseBuilder.course(withID: entry[Keys.id].intValue, inContext: self.context) else {
+                    SSULogging.logError("Unable to retrieve or create Event with id: \(entry[Keys.id].intValue)")
+                    return
+                }
+                if mode == .deleted {
+                    context.delete(course)
+                    continue
+                }
+                course.term = entry[Keys.term].int16 ?? 0
+                course.class_number = entry[Keys.class_number].int16 ?? 0
+                course.department = entry[Keys.department].string
+                course.subject = entry[Keys.subject].string
+                course.catalog = entry[Keys.catalog].string
+                course.section = entry[Keys.section].int16 ?? 0
+                course.descript = entry[Keys.designation].string
+                course.component = entry[Keys.component].string
+                course.max_units = entry[Keys.max_units].int16 ?? 0
+                course.min_units = entry[Keys.min_units].int16 ?? 0
+                course.class_type = entry[Keys.class_type].string
+                course.designation = entry[Keys.designation].string
+    //            course.metting_pattern = entry[Keys.metting_pattern].string
+                course.instructor_id = entry[Keys.instructor_id].int32 ?? 0
+                course.first_name =  entry[Keys.first_name].string
+                course.last_name = entry[Keys.last_name].string
+                course.combined_section = entry[Keys.combined_section].string
+                course.auto_enroll1 = entry[Keys.auto_enroll1].int16 ?? 0
+                course.auto_enroll2 = entry[Keys.auto_enroll2].int16 ?? 0
+                course.acad_group = entry[Keys.acad_group].int16 ?? 0
+                course.school_name = entry[Keys.school_name].string
+                course.facility_id = entry[Keys.facility_id].string
+                course.cs_number = entry[Keys.cs_number].int16 ?? 0
+                course.wtu = entry[Keys.wtu].int16 ?? 0
+    //            course.k_kactor = entry[Keys.k_factor].int16 ?? 0
+                course.s_factor = entry[Keys.s_factor].int16 ?? 0
+    //            course.workoad_factor = entry[Keys.workoad_factor].string
+                if let d = course.descript {
+                    print("\(d)")
+                }
+                
+                SSULogging.log(String(course.id))
             }
-            if mode == .deleted {
-                context.delete(course)
-                continue
-            }
-            course.term = entry[Keys.term].int16 ?? 0
-            course.class_number = entry[Keys.class_number].int16 ?? 0
-            course.department = entry[Keys.department].string
-            course.subject = entry[Keys.subject].string
-            course.catalog = entry[Keys.catalog].string
-            course.section = entry[Keys.section].int16 ?? 0
-            course.descript = entry[Keys.designation].string
-            course.component = entry[Keys.component].string
-            course.max_units = entry[Keys.max_units].int16 ?? 0
-            course.min_units = entry[Keys.min_units].int16 ?? 0
-            course.class_type = entry[Keys.class_type].string
-            course.designation = entry[Keys.designation].string
-//            course.metting_pattern = entry[Keys.metting_pattern].string
-            course.instructor_id = entry[Keys.instructor_id].int32 ?? 0
-            course.first_name =  entry[Keys.first_name].string
-            course.last_name = entry[Keys.last_name].string
-            course.combined_section = entry[Keys.combined_section].string
-            course.auto_enroll1 = entry[Keys.auto_enroll1].int16 ?? 0
-            course.auto_enroll2 = entry[Keys.auto_enroll2].int16 ?? 0
-            course.acad_group = entry[Keys.acad_group].int16 ?? 0
-            course.school_name = entry[Keys.school_name].string
-            course.facility_id = entry[Keys.facility_id].string
-            course.cs_number = entry[Keys.cs_number].int16 ?? 0
-            course.wtu = entry[Keys.wtu].int16 ?? 0
-//            course.k_kactor = entry[Keys.k_factor].int16 ?? 0
-            course.s_factor = entry[Keys.s_factor].int16 ?? 0
-//            course.workoad_factor = entry[Keys.workoad_factor].string
-            
-            SSULogging.log(String(course.id))
         }
         saveContext()
-        SSULogging.logDebug("Finish building events")
+        SSULogging.logDebug("Finish building catalog")
     }
 
 
