@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     
@@ -41,6 +42,9 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
                 SSULogging.logError("Error while attemping to update Schedule Classes: \(error)")
                 completion?()
             } else {
+                let x = JSON(json).dictionaryValue["next"]
+                print("x")
+                
                 self.build(json: json) {
                     completion?()
                 }
@@ -48,6 +52,7 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
         }
     }
 
+    
     private func build(json: Any, completion: (() -> Void)? = nil) {
         let builder = SSUCourseBuilder()
         builder.context = backgroundContext
@@ -57,6 +62,7 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
             completion?()
         }
     }
+    
     
     // MARK: SSUModuleUI
     

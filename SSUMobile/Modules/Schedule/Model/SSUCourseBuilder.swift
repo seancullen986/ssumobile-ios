@@ -44,6 +44,8 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         static let workoad_factor = "workoad_factor"
     }
     
+    private var jsonResults: JSON
+    
     static func course(withID id: Int, inContext: NSManagedObjectContext) -> SSUCourse? {
         if id <= 0 {
             SSULogging.logError("Received invalid course id \(id)")
@@ -59,13 +61,28 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         return obj
     }
     
+    private func fetchComplete(_ results: Any) -> Bool {
+        let data = JSON(results)
+        if let next = data.dictionaryValue["next"] {
+            if( next == "null" ) { return true }
+        }
+        
+        do {
+            jsonResults = try jsonResults.merge(with: data.dictionaryValue["results"].arrayValue)
+        } catch {
+            print("Error")
+        }
+        
+        return false
+    }
+    
     override func build(_ results: Any!) {
         SSULogging.logDebug("Building events")
         let json = JSON(results)
-        
+    
         for entry in (json.arrayValue) {
             let mode = self.mode(fromJSONData: entry.dictionaryObject ?? [:])
-
+            
             SSULogging.log("Event id = \(entry[Keys.id])")
 
             guard let course = SSUCourseBuilder.course(withID: entry[Keys.id].intValue, inContext: self.context) else {
