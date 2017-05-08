@@ -42,14 +42,57 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
                 SSULogging.logError("Error while attemping to update Schedule Classes: \(error)")
                 completion?()
             } else {
-                let x = JSON(json).dictionaryValue["next"]
-                print("x")
-                
-                self.build(json: json) {
+                self.compile(json: json) {
                     completion?()
                 }
             }
         }
+    }
+    
+    private func fetchNext(url: URL, completion: (result: Any) -> ()) {
+        
+        SSUCommunicator.getJSONFrom(url) { (response, json, error) in
+            if let error = error {
+                SSULogging.logError("Error while attemping to update Schedule Classes: \(error)")
+                
+            } else {
+                return completion(result: json)
+            }
+        }
+
+    }
+    
+    static var jData: Any?
+        
+    
+    
+    
+    private func compile(json: Any, completion: (() -> Void)? = nil) {
+        let builder = SSUCourseBuilder()
+        builder.context = backgroundContext
+        backgroundContext.perform {
+
+            var first = builder.fetchComplete(json)
+            if( first != "") {
+
+                self.fetchNext(url: next, completion: { (js) in
+                    
+                    if let more = js as? Any{
+                        if let next = builder.fetchComplete(more) as? NSURL {
+                            
+                        }
+                    }
+                })
+   
+
+                
+            } else {
+                self.build(json: builder.getResults() as Any) {
+                    completion?()
+                }
+            }
+        }
+        
     }
 
     
@@ -57,6 +100,11 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
         let builder = SSUCourseBuilder()
         builder.context = backgroundContext
         backgroundContext.perform {
+            var next = ""
+            repeat {
+                next = builder.fetchComplete(json)
+            } while(next != "");
+            
             builder.build(json)
             SSULogging.logDebug("Finish building Schedule")
             completion?()

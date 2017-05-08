@@ -44,7 +44,9 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         static let workoad_factor = "workoad_factor"
     }
     
-    private var jsonResults: JSON
+    var jsonResults: JSON?
+    var js: Any?
+    var arrOJ: [[JSON]] = []
     
     static func course(withID id: Int, inContext: NSManagedObjectContext) -> SSUCourse? {
         if id <= 0 {
@@ -61,24 +63,28 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         return obj
     }
     
-    private func fetchComplete(_ results: Any) -> Bool {
+    func fetchComplete(_ results: Any) -> String {
         let data = JSON(results)
-        if let next = data.dictionaryValue["next"] {
-            if( next == "null" ) { return true }
+        if let next = data.dictionaryValue["next"]?.string {
+            if( next == "null" ) { return "" }
+            if let arr = data.dictionaryValue["results"]?.array {
+                arrOJ.append(arr)
+
+                return next
+            }
+            
         }
         
-        do {
-            jsonResults = try jsonResults.merge(with: data.dictionaryValue["results"].arrayValue)
-        } catch {
-            print("Error")
-        }
-        
-        return false
+        return ""
+    }
+    
+    func getResults() -> Any? {
+        return jsonResults
     }
     
     override func build(_ results: Any!) {
         SSULogging.logDebug("Building events")
-        let json = JSON(results)
+        let json = JSON(jsonResults!)
     
         for entry in (json.arrayValue) {
             let mode = self.mode(fromJSONData: entry.dictionaryObject ?? [:])
