@@ -22,10 +22,6 @@ static NSString * SSURadioPlayerLoadingMessage = @"Loading...";
 static NSString * SSURadioButtonImagePlay = @"radio_play";
 static NSString * SSURadioButtonImagePause = @"radio_pause";
 
-// 4/25/17 Fixes performed: KSUNRADIO.COM is not the correct website. Changed to sonomastateradio.com
-static NSString * SSURadioWebPageURL = @"http://www.sonomastateradio.com";
-
-
 @interface SSURadioViewController() <UIActionSheetDelegate>
 
 @property (nonatomic,getter=isPlaying) BOOL playing;
@@ -284,7 +280,6 @@ static NSString * SSURadioWebPageURL = @"http://www.sonomastateradio.com";
 {
     if (buttonIndex != actionSheet.cancelButtonIndex)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SSURadioWebPageURL]];
         NSURL * url = [NSURL URLWithString:[[SSUConfiguration sharedInstance] stringForKey:SSURadioWebsiteURLKey]];
         if (NSStringFromClass([SFSafariViewController class])) {
             SFSafariViewController * vc = [[SFSafariViewController alloc] initWithURL:url
