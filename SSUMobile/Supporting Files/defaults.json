@@ -15,6 +15,7 @@
     "edu.sonoma.radio.stream.disabled.message" : "KSUN Radio has switched to a streaming service which does not support mobile play, as it requires Adobe Flash. As soon as the stream becomes available again, it will be enabled on SSUMobile.",
     "edu.sonoma.radio.stream.url" : "http://origin-ord-ksun.streamguys1.com/stream",
     "edu.sonoma.radio.website" : "http://www.sonomastateradio.com",
+    "edu.sonoma.radio.schedule.url": "http://www.sonomastateradio.com/copy-of-schedule-1",
 
     "edu.sonoma.email.login.enabled" : true,
     "edu.sonoma.email.ldap.url" : "https://login.sonoma.edu",

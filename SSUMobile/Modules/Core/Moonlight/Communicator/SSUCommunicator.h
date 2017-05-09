@@ -19,6 +19,10 @@ typedef void(^SSUCommunicatorJSONCompletion)(NSURLResponse * response, id json, 
 
 + (NSDateFormatter *) dateFormatter;
 
+#pragma mark - Network Indicator
+
++ (void) setNetworkActivityIndicatorVisible:(BOOL)visible;
+
 #pragma mark Creating URL Requests
 
 /**

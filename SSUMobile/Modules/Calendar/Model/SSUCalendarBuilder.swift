@@ -13,14 +13,6 @@ class SSUCalendarBuilder: SSUMoonlightBuilder {
 
     private struct Keys {
         static let id = "id"
-        static let startDate = "start_date"
-        static let endDate = "end_date"
-        static let title = "title"
-        static let organization = "organization"
-        static let category = "category"
-        static let location = "location"
-        static let summary = "description"
-        static let imgURL = "image_url"
     }
     
     static func event(withID id: Int, inContext: NSManagedObjectContext) -> SSUEvent? {
@@ -51,13 +43,7 @@ class SSUCalendarBuilder: SSUMoonlightBuilder {
                 continue
             }
             
-            event.startDate = dateFormatter.date(from: entry[Keys.startDate].stringValue)
-            event.endDate = dateFormatter.date(from: entry[Keys.endDate].stringValue)
-            event.title = entry[Keys.title].string
-            event.organization = entry[Keys.organization].string
-            event.category = entry[Keys.category].string
-            event.location = entry[Keys.location].string
-            event.summary = entry[Keys.summary].string
+            event.initializeWith(json: entry)
         }
         saveContext()
         SSULogging.logDebug("Finish building events")

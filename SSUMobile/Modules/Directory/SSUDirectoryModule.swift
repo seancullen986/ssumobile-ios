@@ -59,7 +59,7 @@ class SSUDirectoryModule: SSUCoreDataModuleBase, SSUModuleUI, SSUSpotlightSuppor
     
     func updateDepartments(completion: (() -> Void)? = nil) {
         let date = SSUConfiguration.sharedInstance().date(forKey:SSUDirectoryDepartmentUpdatedDateKey)
-        SSUMoonlightCommunicator.getJSONFromPath("directory/deparment", since:date) { (response, json, error) in
+        SSUMoonlightCommunicator.getJSONFromPath("directory/department", since:date) { (response, json, error) in
             if let error = error {
                 SSULogging.logError("Error while attemping to update Directory departments: \(error)")
                 completion?()
