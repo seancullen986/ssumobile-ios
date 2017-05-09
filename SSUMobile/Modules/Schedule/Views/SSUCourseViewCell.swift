@@ -67,9 +67,10 @@ class SSUCourseViewCell: UITableViewCell {
     }
     
     func stringForCell(){
-        ClassName.text = "\(subject!) \(catalog!) - \(component!)"
-        TimeFrame.text = "\(startTime!)-\(endTime!)"
-        Professor.text = "\(instructor!)"
+
+        ClassName.text = "\(subject ?? "[N/A]") \(catalog ?? "[N/A]") - \(component ?? "[N/A]")"
+        TimeFrame.text = "\(startTime ?? "")-\(endTime ?? "")"
+        Professor.text = "\(instructor ?? "UNKNOWN")"
     }
     
     

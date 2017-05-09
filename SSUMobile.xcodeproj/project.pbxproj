@@ -187,6 +187,7 @@
 		C4A7BE6716BA241900B919F0 /* SSUBuildingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A7BE6616BA241900B919F0 /* SSUBuildingViewController.m */; };
 		C4FBF74516BB8C5C00BE95E3 /* News.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4FBF74316BB8C5C00BE95E3 /* News.xcdatamodeld */; };
 		DB10EE5E1EBF25FD008CB4E5 /* SSUCourseDetailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB10EE5D1EBF25FD008CB4E5 /* SSUCourseDetailHelper.swift */; };
+		DB1F587A1EC15EC70059EFE8 /* SSUCatalogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1F58791EC15EC70059EFE8 /* SSUCatalogTableViewController.swift */; };
 		DB2A64691EBE9364008726BB /* SSUScheduleTableViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64681EBE9364008726BB /* SSUScheduleTableViewContorller.swift */; };
 		DB2A646B1EBE9480008726BB /* SSUCourseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646A1EBE9480008726BB /* SSUCourseViewCell.swift */; };
 		DB2A646D1EBE9593008726BB /* SSUCourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */; };
@@ -521,6 +522,7 @@
 		CFFEFE76E20960FEACAD3748 /* Pods_SSUMobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSUMobileTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DC4BB874ADB0462526968D /* Pods-SSUMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSUMobileTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SSUMobileTests/Pods-SSUMobileTests.release.xcconfig"; sourceTree = "<group>"; };
 		DB10EE5D1EBF25FD008CB4E5 /* SSUCourseDetailHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSUCourseDetailHelper.swift; sourceTree = "<group>"; };
+		DB1F58791EC15EC70059EFE8 /* SSUCatalogTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUCatalogTableViewController.swift; path = Schedule/Views/SSUCatalogTableViewController.swift; sourceTree = "<group>"; };
 		DB2A64681EBE9364008726BB /* SSUScheduleTableViewContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUScheduleTableViewContorller.swift; path = Schedule/Views/SSUScheduleTableViewContorller.swift; sourceTree = "<group>"; };
 		DB2A646A1EBE9480008726BB /* SSUCourseViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUCourseViewCell.swift; path = Schedule/Views/SSUCourseViewCell.swift; sourceTree = "<group>"; };
 		DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUCourseDetailViewController.swift; path = Schedule/Views/SSUCourseDetailViewController.swift; sourceTree = "<group>"; };
@@ -1550,6 +1552,7 @@
 				DB2A646A1EBE9480008726BB /* SSUCourseViewCell.swift */,
 				DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */,
 				DB2A64711EBE9AD4008726BB /* Schedule.storyboard */,
+				DB1F58791EC15EC70059EFE8 /* SSUCatalogTableViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1799,6 +1802,7 @@
 				0766F1871B4BA404003BD52C /* SSUMapBuilder.m in Sources */,
 				071E237819E2380B00483138 /* SSUResourcesViewController.m in Sources */,
 				07F54F691E888F2300D24EA7 /* SSUNewsViewController.swift in Sources */,
+				DB1F587A1EC15EC70059EFE8 /* SSUCatalogTableViewController.swift in Sources */,
 				07C5A4E71A87168D004DC819 /* SSULDAPCredentials.m in Sources */,
 				076CBF541B6F350C00364B36 /* SSUPersonTableViewCell.m in Sources */,
 				78AD220C171731F600FB89F0 /* SSUDirectoryBuilder.m in Sources */,

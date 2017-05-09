@@ -37,6 +37,7 @@ class SSUScheduleTableViewController: UITableViewController  {
         }
         
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +51,22 @@ class SSUScheduleTableViewController: UITableViewController  {
             backgroundImageView = UIImageView(image: image)
             self.tableView.backgroundView = backgroundImageView
         }
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+    
+        
+        let newButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(SSUScheduleTableViewController.doStuff))
+        self.navigationItem.rightBarButtonItem = newButton
         
         refresh()
+    }
+    
+    @IBAction func doStuff(sender: AnyObject) {
+        guard let vc = UIStoryboard(name:"Schedule", bundle:nil).instantiateViewController(withIdentifier: "catalogView") as? SSUCatalogTableViewController else {
+                print("Could not instantiate view controller with identifier of type SecondViewController")
+                return
+            }
+        
+        
+        self.navigationController?.pushViewController(vc, animated:true)
     }
     
     
@@ -101,6 +115,7 @@ class SSUScheduleTableViewController: UITableViewController  {
     }
     
     private func reloadScheduleTableView() {
+        getCoursesInSchedule()
         tableView.reloadData()
     }
 
@@ -218,6 +233,19 @@ class SSUScheduleTableViewController: UITableViewController  {
             }
             
         }
+        
+//        if segue.identifier == "scheduleToCatalog" {
+//            guard let vc = UIStoryboard(name:"Schedule", bundle:nil).instantiateViewController(withIdentifier: "catalogView") as? SSUCatalogTableViewController else {
+//                print("Could not instantiate view controller with identifier of type SecondViewController")
+//                return
+//            }
+//            
+//            
+//            self.navigationController?.pushViewController(vc, animated:true)
+////            if let catalog = segue.destination as? SSUCatalogTableViewController {
+////                catalog.title = "HI"
+////            }
+//        }
     }
     
     
