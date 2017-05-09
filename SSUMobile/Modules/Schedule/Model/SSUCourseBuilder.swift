@@ -27,7 +27,7 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         static let designation = "designation"
         static let start_time = "start_time"
         static let end_time = "end_time"
-        static let metting_pattern = "meeting_pattern"
+        static let meeting_pattern = "meeting_pattern"
         static let instructor_id = "instructor_id"
         static let first_name = "first_name"
         static let last_name = "last_name"
@@ -35,13 +35,13 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         static let auto_enroll1 = "auto_enroll1"
         static let auto_enroll2 = "auto_enroll2"
         static let acad_group = "acad_group"
-        static let school_name = "class_name"
+        static let school_name = "school_name"
         static let facility_id = "facility_id"
         static let cs_number = "cs_number"
         static let wtu = "wtu"
         static let k_factor = "k_factor"
         static let s_factor = "s_factor"
-        static let workoad_factor = "workoad_factor"
+        static let workload_factor = "workload_factor"
     }
     
     var jsonResults: JSON?
@@ -70,7 +70,6 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         if let next = data.dictionaryValue["next"]?.string {
             if( next == "null" ) { return ("", nil)}
             if let arr = data.dictionaryValue["results"]?.arrayValue {
-                //arrOJ.append(arr)
                 
                 return (next, arr)
             }
@@ -86,9 +85,9 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
     
     override func build(_ results: Any!) {
         SSULogging.logDebug("Building events")
-        let arr = JSON(results).arrayValue
+        let arr = results as? [Any]
         
-        for page in arr {
+        for page in arr! {
             let data = JSON(page).array!
             for entry in (JSON(data).arrayValue) {
                 let mode = self.mode(fromJSONData: entry.dictionaryObject ?? [:])
@@ -103,33 +102,36 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
                     context.delete(course)
                     continue
                 }
-                course.term = entry[Keys.term].int16 ?? 0
+                
+                course.term = entry[Keys.term].string
                 course.class_number = entry[Keys.class_number].int16 ?? 0
                 course.department = entry[Keys.department].string
                 course.subject = entry[Keys.subject].string
                 course.catalog = entry[Keys.catalog].string
-                course.section = entry[Keys.section].int16 ?? 0
+                course.section = entry[Keys.section].string
                 course.descript = entry[Keys.designation].string
                 course.component = entry[Keys.component].string
-                course.max_units = entry[Keys.max_units].int16 ?? 0
-                course.min_units = entry[Keys.min_units].int16 ?? 0
+                course.max_units = entry[Keys.max_units].string
+                course.min_units = entry[Keys.min_units].string
                 course.class_type = entry[Keys.class_type].string
                 course.designation = entry[Keys.designation].string
-    //            course.metting_pattern = entry[Keys.metting_pattern].string
-                course.instructor_id = entry[Keys.instructor_id].int32 ?? 0
+                course.start_time = entry[Keys.start_time].string
+                course.end_time = entry[Keys.end_time].string
+                course.meeting_pattern = entry[Keys.meeting_pattern].string
+                course.instructor_id = entry[Keys.instructor_id].string
                 course.first_name =  entry[Keys.first_name].string
                 course.last_name = entry[Keys.last_name].string
                 course.combined_section = entry[Keys.combined_section].string
-                course.auto_enroll1 = entry[Keys.auto_enroll1].int16 ?? 0
-                course.auto_enroll2 = entry[Keys.auto_enroll2].int16 ?? 0
-                course.acad_group = entry[Keys.acad_group].int16 ?? 0
+                course.auto_enroll1 = entry[Keys.auto_enroll1].string
+                course.auto_enroll2 = entry[Keys.auto_enroll2].string
+                course.acad_group = entry[Keys.acad_group].string
                 course.school_name = entry[Keys.school_name].string
                 course.facility_id = entry[Keys.facility_id].string
-                course.cs_number = entry[Keys.cs_number].int16 ?? 0
-                course.wtu = entry[Keys.wtu].int16 ?? 0
-    //            course.k_kactor = entry[Keys.k_factor].int16 ?? 0
-                course.s_factor = entry[Keys.s_factor].int16 ?? 0
-    //            course.workoad_factor = entry[Keys.workoad_factor].string
+                course.cs_number = entry[Keys.cs_number].string
+                course.wtu = entry[Keys.wtu].string
+                course.k_factor = entry[Keys.k_factor].string
+                course.s_factor = entry[Keys.s_factor].string
+                course.workload_factor = entry[Keys.workload_factor].string
                 if let d = course.descript {
                     print("\(d)")
                 }

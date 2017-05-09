@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="SSUCourse" representedClassName="SSUCourse" elementID="Catalog" syncable="YES">
-        <attribute name="acad_group" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="auto_enroll1" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="auto_enroll2" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="acad_group" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="auto_enroll1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="auto_enroll2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="catalog" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="class_number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="class_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="combined_section" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="component" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="cs_number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="cs_number" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="department" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descript" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="designation" optional="YES" attributeType="String" syncable="YES"/>
@@ -17,27 +17,27 @@
         <attribute name="facility_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="instructor_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="k_factor" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="instructor_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="k_factor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="max_units" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="max_units" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="meeting_pattern" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="min_units" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="s_factor" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="min_units" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="s_factor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="school_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="section" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="start_time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="term" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="workload_factor" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="wtu" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="wtu" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="SSUSchedule" representedClassName="SSUSchedule" syncable="YES">
         <attribute name="class_number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="end_time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" minValueString="0" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="start_time" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="term" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="SSUCourse" positionX="-288" positionY="-261" width="128" height="495"/>

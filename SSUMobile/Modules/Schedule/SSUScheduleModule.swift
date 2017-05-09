@@ -62,7 +62,7 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
 
     }
     
-    static var jData: [Any]?
+    static var jData: [Any] = []
     
     
     
@@ -78,7 +78,7 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
             }
             
             if let x = data {
-                SSUScheduleModule.jData?.append(x)
+                SSUScheduleModule.jData.append(x)
             }
             
             if( address != "") {
@@ -89,7 +89,7 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
                             (address, data) = builder.fetchComplete(more)
                             
                             if let x = data {
-                                SSUScheduleModule.jData?.append(x)
+                                SSUScheduleModule.jData.append(x)
                             }
                             
                             self.compile(json: result as Any, next: address) {
@@ -101,7 +101,7 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
 
 
             } else {
-                self.build(json: SSUScheduleModule.jData as Any) {
+                self.build(json: SSUScheduleModule.jData as Any ) {
                     completion?()
                 }
             }
@@ -114,11 +114,6 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
         let builder = SSUCourseBuilder()
         builder.context = backgroundContext
         backgroundContext.perform {
-            var next = ""
-            var trash: Any?
-            repeat {
-                (next, trash) = builder.fetchComplete(json)
-            } while(next != "");
             
             builder.build(json)
             SSULogging.logDebug("Finish building Schedule")
