@@ -132,11 +132,8 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
                 course.k_factor = entry[Keys.k_factor].string
                 course.s_factor = entry[Keys.s_factor].string
                 course.workload_factor = entry[Keys.workload_factor].string
-                if let d = course.descript {
-                    print("\(d)")
-                }
+ 
                 
-                SSULogging.log(String(course.id))
             }
         }
         saveContext()
