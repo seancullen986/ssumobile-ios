@@ -133,7 +133,6 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
                 course.s_factor = entry[Keys.s_factor].string
                 course.workload_factor = entry[Keys.workload_factor].string
  
-                
             }
         }
         saveContext()
