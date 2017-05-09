@@ -56,7 +56,7 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
             return nil
         }
         
-        SSULogging.log("ScheduleBuilder:course -- courseID  \(id) is valid")
+        // SSULogging.log("ScheduleBuilder:course -- courseID  \(id) is valid")
         
         let obj = self.object(withEntityName: "SSUCourse", id: id, context: inContext) as? SSUCourse
         // Here we don't know if this is a new object or one that already existed, so make sure it has an id
@@ -92,7 +92,7 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
             for entry in (JSON(data).arrayValue) {
                 let mode = self.mode(fromJSONData: entry.dictionaryObject ?? [:])
                 
-                SSULogging.log("Event id = \(entry[Keys.id])")
+                //SSULogging.log("Event id = \(entry[Keys.id])")
 
                 guard let course = SSUCourseBuilder.course(withID: entry[Keys.id].intValue, inContext: self.context) else {
                     SSULogging.logError("Unable to retrieve or create Event with id: \(entry[Keys.id].intValue)")

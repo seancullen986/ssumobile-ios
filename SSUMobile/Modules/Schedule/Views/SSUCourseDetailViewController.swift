@@ -9,6 +9,8 @@
 import UIKit
 
 class SSUCourseDetailViewController: UIViewController {
+    var context: NSManagedObjectContext = SSUScheduleModule.instance.context!
+    
     var classData: SSUCourse?
     var backgroundImageView: UIImageView?
     // var building: SSUBuilding?
@@ -29,6 +31,7 @@ class SSUCourseDetailViewController: UIViewController {
     @IBOutlet weak var _days: UILabel!
     @IBOutlet weak var _time: UILabel!
     
+    @IBOutlet weak var _addOrDelete: UIButton!
     @IBOutlet weak var secondaryInfoView: UIView!
     @IBOutlet weak var _component: UILabel!
     @IBOutlet weak var _units: UILabel!
@@ -58,6 +61,7 @@ class SSUCourseDetailViewController: UIViewController {
         
         //        _building.addGestureRecognizer(tapGesture!)
         roundViewCorners()
+        buttonSetup()
         displayClassData()
     }
     
@@ -82,16 +86,45 @@ class SSUCourseDetailViewController: UIViewController {
         classData = course
     }
     
+    func buttonSetup() {
+        if isAdd() {
+            _addOrDelete.titleLabel?.text = "ADD"
+            _addOrDelete.layer.backgroundColor = UIColorFromHex(rgbValue: 0x428bca).cgColor
+        } else {
+            _addOrDelete.titleLabel?.text = "Delete"
+            _addOrDelete.layer.backgroundColor = UIColorFromHex(rgbValue: 0xd9534f).cgColor
+        }
+    }
+    
+    func isAdd() -> Bool {
+        let fetchRequest: NSFetchRequest<SSUSchedule> = SSUSchedule.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", (classData?.id)!)
+        do {
+            let responce = try context.fetch(fetchRequest)
+            if(!(responce.isEmpty)) {
+                return true
+            }
+            
+        } catch {
+            SSULogging.logError("Error fetching schedule: \(error)")
+            
+            
+        }
+        
+        return false
+
+    }
+    
     
     func displayClassData(){
 
-        _className.text = (classData?.subject)! + " " + (classData?.catalog)!
+        _className.text = (classData?.subject ?? "[N/A]") + " " + (classData?.catalog ?? "")!
         
-        _description.text = classData?.description
-
-        _instructor.text = "Instructor: " + (classData?.first_name)! + " " + (classData?.last_name)!
-        _days.text = getDays(standardMeetingPattern: (classData?.meeting_pattern)!)
-        _time.text = (classData?.start_time)! + "-" + (classData?.end_time)!
+        _description.text = (classData?.descript ?? "")
+        
+        _instructor.text = "Instructor: " + (classData?.first_name ?? "") + " " + (classData?.last_name ?? "")
+        _days.text = getDays(standardMeetingPattern: (classData?.meeting_pattern) ?? "[N/A]")
+        _time.text = (classData?.start_time ?? "") + "-" + (classData?.end_time ?? "")
         
         if classData?.component == "ACT"{
             _component.text = "Activity"
@@ -102,15 +135,15 @@ class SSUCourseDetailViewController: UIViewController {
         else{
             _component.text = "Discussion"
         }
-        _units.text = "Units: " + "\((classData?.max_units)!)"
-        if ( (classData?.combined_section)! != "" ){
+        _units.text = "Units: " + "\((classData?.max_units ?? ""))"
+        if ( (classData?.combined_section ?? "") != "" ){
             _combinedSection.text = "Combined Section? Yes"
         }
         else{
             _combinedSection.text = "Combined Section? No"
         }
-        _designation.text = "Designation: " + "\((classData?.designation)!)"
-        _section.text = "Section " + "\((classData?.section)!)"
+        _designation.text = "Designation: " + "\((classData?.designation ?? ""))"
+        _section.text = "Section " + "\((classData?.section ?? ""))"
         
         if let f_id = classData?.facility_id {
             let add_details = SSUCourseDetailHelper.location(f_id)
@@ -167,7 +200,7 @@ class SSUCourseDetailViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "building"{
-//            let building: SSUBuilding = SSUDirectoryBuilder.building(withName: (classData?.building)!, in: SSUDirectoryModule.instance.context)
+//            let building: SSUBuilding = SSUDirectoryBuilder.building(withID: (classData?.building)!, in: SSUDirectoryModule.instance.context)
 //            let controller: SSUDirectoryViewController = segue.destination as! SSUDirectoryViewController
 //            let predicate = NSPredicate(format: "building = %@", building)
 //            controller.defaultPredicate = predicate
@@ -185,7 +218,7 @@ class SSUCourseDetailViewController: UIViewController {
 //        else{
 //            print("Unrecognized segue: \(segue)")
 //        }
-//
+
     }
     
 }

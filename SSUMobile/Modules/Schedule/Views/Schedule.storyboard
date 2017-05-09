@@ -19,17 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.59607843137254901" green="0.74509803921568629" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="tHd-7H-YJx">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="dSX-8B-2pl" id="Nfz-sh-lPr"/>
-                            </connections>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CourseViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CourseViewCell" id="Jm6-at-3r2" customClass="SSUCourseViewCell" customModule="SSUMobile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="84"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jm6-at-3r2" id="HKj-Y4-YsX">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
@@ -84,7 +76,6 @@
                 <searchDisplayController id="veE-ak-ksG">
                     <connections>
                         <outlet property="delegate" destination="dSX-8B-2pl" id="4SX-4D-HwU"/>
-                        <outlet property="searchBar" destination="tHd-7H-YJx" id="TQy-M7-gwW"/>
                         <outlet property="searchContentsController" destination="dSX-8B-2pl" id="NEK-wc-1Dv"/>
                         <outlet property="searchResultsDataSource" destination="dSX-8B-2pl" id="lyo-gY-XPy"/>
                         <outlet property="searchResultsDelegate" destination="dSX-8B-2pl" id="3fo-vB-sHe"/>
@@ -93,15 +84,15 @@
             </objects>
             <point key="canvasLocation" x="-1130" y="-120"/>
         </scene>
-        <!--Class Details View Controller-->
+        <!--Course Detail View Controller-->
         <scene sceneID="g5t-0M-bjw">
             <objects>
-                <viewController id="Wb6-gr-Mzg" customClass="ClassDetailsViewController" customModule="SSUMobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Wb6-gr-Mzg" customClass="SSUCourseDetailViewController" customModule="SSUMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SR8-5U-0og"/>
                         <viewControllerLayoutGuide type="bottom" id="E9A-Yu-vNO"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="AjC-wy-b2C">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="AjC-wy-b2C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -237,6 +228,29 @@
                                     <constraint firstAttribute="height" constant="135" id="9dO-OL-UNZ"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C27-SW-lzU">
+                                <rect key="frame" x="120" y="545" width="135" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="titleShadowOffset" width="3" height="3"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Button">
+                                            <attributes>
+                                                <font key="NSFont" size="24" name="ArialRoundedMTBold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.59607843140000005" green="0.74509803919999995" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -252,6 +266,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="_addOrDelete" destination="C27-SW-lzU" id="6Xa-eB-ELH"/>
                         <outlet property="_building" destination="8GI-pP-fBP" id="vO7-pJ-U8w"/>
                         <outlet property="_className" destination="GJy-Pp-Qte" id="thE-J6-nAk"/>
                         <outlet property="_combinedSection" destination="SxR-vz-3np" id="BSp-kD-4s2"/>
@@ -323,6 +338,7 @@
                                     <outlet property="ClassName" destination="onw-72-HPW" id="SpH-l8-l7C"/>
                                     <outlet property="Professor" destination="gUK-e8-4c2" id="Yg1-up-qbm"/>
                                     <outlet property="TimeFrame" destination="NXB-s9-dxI" id="GLX-6X-Cwl"/>
+                                    <segue destination="Wb6-gr-Mzg" kind="show" identifier="courseDetailView" id="4ED-rv-wEm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -334,7 +350,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3K-Lr-h9B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13.6" y="816.34182908545733"/>
+            <point key="canvasLocation" x="-1130" y="579"/>
         </scene>
         <!--Storyboard Link-->
         <scene sceneID="Ly7-63-kie">
@@ -381,4 +397,7 @@
             <point key="canvasLocation" x="1622" y="203"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4ED-rv-wEm"/>
+    </inferredMetricsTieBreakers>
 </document>
