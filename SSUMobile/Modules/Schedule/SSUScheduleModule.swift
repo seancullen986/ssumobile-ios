@@ -60,7 +60,7 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
                     SSULogging.logError("Error while attemping to update Schedule Classes: \(error)")
                     completion?()
                 } else {
-                    self.test(data: json) {
+                    self.getNext(data: json) {
                         completion?()
                     }
                 }
@@ -88,7 +88,7 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     }
     
     
-    private func test (data: Any?, completion: (() -> Void)? = nil) {
+    private func getNext (data: Any?, completion: (() -> Void)? = nil) {
         let builder = SSUCourseBuilder()
         builder.context = backgroundContext
         backgroundContext.perform {
@@ -102,7 +102,7 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
             
             if SSUScheduleModule.nextAddress != "" {
                 self.fetchNext(next: SSUScheduleModule.nextAddress) { (result) in
-                    self.test(data: result)
+                    self.getNext(data: result)
                     
                 }
             } else {
@@ -114,51 +114,7 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
                 
         }
         
-        
-        
     }
-    
-    
-//    private func compile(json: Any, next: String, completion: (() -> Void)? = nil) {
-//        let builder = SSUCourseBuilder()
-//        builder.context = backgroundContext
-//        backgroundContext.perform {
-//            var address = next
-//            var data: Any?
-//            if (address == "") {
-//                (address, data) = builder.fetchComplete(json)
-//            }
-//            
-//            if let x = data {
-//                SSUScheduleModule.jData.append(x)
-//            }
-//            
-//            if( address != "") {
-//                if let url = URL(string: address) {
-//                    self.fetchNext(url: url, completion: { (result) in
-//                        if let more = result {
-//                            (address, data) = builder.fetchComplete(more)
-//                            
-//                            if let x = data {
-//                                SSUScheduleModule.jData.append(x)
-//                            }
-//                            
-//                            self.compile(json: result as Any, next: address) {
-//                                completion?()
-//                            }
-//                        } else { address = "" }
-//                    })
-//                }
-//
-//
-//            } else {
-//                self.build(json: SSUScheduleModule.jData as Any ) {
-//                    completion?()
-//                }
-//            }
-//        }
-//        
-//    }
 
     
     private func build(json: Any, completion: (() -> Void)? = nil) {
