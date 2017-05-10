@@ -233,6 +233,9 @@ class SSUScheduleTableViewController: UITableViewController  {
             }
             
         }
+        else{
+            print("STVC\tUnidentified segue: \(segue)")
+        }
         
 //        if segue.identifier == "scheduleToCatalog" {
 //            guard let vc = UIStoryboard(name:"Schedule", bundle:nil).instantiateViewController(withIdentifier: "catalogView") as? SSUCatalogTableViewController else {

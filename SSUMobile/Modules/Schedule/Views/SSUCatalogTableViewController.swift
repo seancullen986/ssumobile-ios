@@ -21,7 +21,7 @@ class SSUCatalogTableViewController: UITableViewController  {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
-        title = "SSU Catalog"
+        title = "SSU Course Catalog"
         
         if let image = UIImage(named: "table_background_image") {
             backgroundImageView = UIImageView(image: image)
@@ -137,6 +137,9 @@ class SSUCatalogTableViewController: UITableViewController  {
                 detailsVC.passClassData(aClass)
             }
             
+        }
+        else{
+            print("Unidentified segue: \(segue)")
         }
     }
     

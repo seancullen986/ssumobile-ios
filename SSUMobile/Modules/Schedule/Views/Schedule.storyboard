@@ -39,7 +39,7 @@
                                             <rect key="frame" x="8" y="0.0" width="359" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <accessibility key="accessibilityConfiguration" identifier="className" label="className"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                             <color key="textColor" red="0.0" green="0.19607843137254902" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -156,7 +156,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3008" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBa-cp-467" userLabel="Room">
-                                        <rect key="frame" x="167" y="105" width="42" height="30"/>
+                                        <rect key="frame" x="164" y="105" width="42" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -179,7 +179,7 @@
                                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <state key="normal" title="Building"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UC-Tp-Mhc">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UC-Tp-Mhc">
                                         <rect key="frame" x="262" y="84" width="75" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -195,7 +195,7 @@
                                     <constraint firstItem="8GI-pP-fBP" firstAttribute="top" secondItem="8S7-nZ-iVC" secondAttribute="bottom" id="CLx-aq-HxV"/>
                                     <constraint firstItem="Nn4-iy-jcJ" firstAttribute="leading" secondItem="gMg-pG-wgc" secondAttribute="leading" constant="5" id="JYo-xd-m1K"/>
                                     <constraint firstItem="8GI-pP-fBP" firstAttribute="firstBaseline" secondItem="sBa-cp-467" secondAttribute="firstBaseline" id="KuM-ye-Uh0"/>
-                                    <constraint firstItem="sBa-cp-467" firstAttribute="leading" secondItem="8GI-pP-fBP" secondAttribute="trailing" constant="8" id="LGm-oQ-v1R"/>
+                                    <constraint firstItem="sBa-cp-467" firstAttribute="leading" secondItem="8GI-pP-fBP" secondAttribute="trailing" constant="5" id="LGm-oQ-v1R"/>
                                     <constraint firstItem="8GI-pP-fBP" firstAttribute="leading" secondItem="Nn4-iy-jcJ" secondAttribute="trailing" constant="2" id="SH0-fz-KjB"/>
                                     <constraint firstItem="yhV-jR-vHX" firstAttribute="leading" secondItem="gMg-pG-wgc" secondAttribute="leading" constant="5" id="d8F-Gh-3GA"/>
                                     <constraint firstItem="8GI-pP-fBP" firstAttribute="baseline" secondItem="Nn4-iy-jcJ" secondAttribute="baseline" id="dwu-SZ-mCh"/>
@@ -310,7 +310,7 @@
                                             <rect key="frame" x="8" y="2" width="359" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <accessibility key="accessibilityConfiguration" identifier="className" label="className"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                             <color key="textColor" red="0.0" green="0.1960784314" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -397,6 +397,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mJD-fB-2iF"/>
+        <segue reference="gDb-kI-AZk"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -100,13 +100,24 @@ class SSUCourseDetailViewController: UIViewController {
     func displayClassData(){
 //        print("SCDVC\tdisplayClassData:\tprinting class data")
 
-        _className.text = (classData?.subject)! + " " + (classData?.catalog)!
+        if classData?.subject == nil || classData?.catalog == nil{  _className.text = "Class Name: TBD" }
+        else{   _className.text = (classData?.subject)! + " " + (classData?.catalog)!   }
+        
         
         _description.text = (classData?.description)!
 
-        _instructor.text = "Instructor: " + (classData?.first_name)! + " " + (classData?.last_name)!
-        _days.text = getDays(standardMeetingPattern: (classData?.meeting_pattern)!)
-        _time.text = (classData?.start_time)! + "-" + (classData?.end_time)!
+        
+        if classData?.first_name == nil || classData?.last_name == nil{     _instructor.text = "Instructor: Staff"  }
+        else{   _instructor.text = "Instructor: " + (classData?.first_name)! + " " + (classData?.last_name)!    }
+        
+        
+        if classData?.meeting_pattern == nil{   _days.text = "Meeting Days: TBD"    }
+        else{   _days.text = getDays(standardMeetingPattern: (classData?.meeting_pattern)!) }
+        
+        
+        if ( classData?.start_time == nil || classData?.end_time == nil ){  _time.text = "Time TBD" }
+        else{   _time.text = (classData?.start_time)! + "-" + (classData?.end_time)!    }
+        
         
         switch (classData?.component)! {
         case "ACT":
@@ -115,35 +126,39 @@ class SSUCourseDetailViewController: UIViewController {
             _component.text = "Lecture"
         case "DIS":
             _component.text = "Discussion"
+        case "SUP":
+            _component.text = "Supervision"
+        case "SEM":
+            _component.text = "Seminar"
         default:
             _component.text = ""
         }
-//        if classData?.component == "ACT"{
-//            _component.text = "Activity"
-//        }
-//        else if classData?.component == "LEC"{
-//            _component.text = "Lecture"
-//        }
-//        else if {
-//            _component.text = "Discussion"
-//        }
-        _units.text = "Units: " + "\((classData?.max_units)!)"
-        if ( classData?.combined_section == nil ){
-            _combinedSection.text = "Combined Section? No"
+
+        if classData?.max_units == nil{
+            
+            if classData?.min_units == nil{ _units.text = "Units: TBD"  }
+            else{   _units.text = "Units: " + "\((classData?.min_units)!)"  }
         }
-        else{
-            _combinedSection.text = "Combined Section? Yes"
-        }
-        _designation.text = "Designation: " + "\((classData?.designation)!)"
-        _section.text = "Section " + "\((classData?.section)!)"
+        else{   _units.text = "Units: " + "\((classData?.max_units)!)"  }
+        
+        
+        if ( classData?.combined_section == nil ){  _combinedSection.text = "Combined Section? No"  }
+        else{   _combinedSection.text = "Combined Section? Yes" }
+        
+        
+        if( classData?.designation == nil ){    _designation.text = "Designation: TBD"  }
+        else{   _designation.text = "Designation: " + "\((classData?.designation)!)"    }
+        
+        
+        if( classData?.section == nil){ _section.text = "Section: TBD"  }
+        else{   _section.text = "Section " + "\((classData?.section)!)" }
+        
         
         if let f_id = classData?.facility_id {
             let add_details = SSUCourseDetailHelper.location(f_id)
             if let building = add_details.building { _building.text = building }
             if let room = add_details.room { _room.text = room }
         }
-
-        
     }
     
     
@@ -164,7 +179,7 @@ class SSUCourseDetailViewController: UIViewController {
     
     func getDays(standardMeetingPattern: String) -> String{
         var meetingDays = [String]()
-        var days = ""
+        var days = "Meeting Days: "
         if (standardMeetingPattern.range(of: "M") != nil){
             meetingDays.append("Monday")
         }
@@ -218,7 +233,7 @@ class SSUCourseDetailViewController: UIViewController {
             // controller.loadEntityName(SSUDirectoryEntityPerson, using: nil)
         }
         else{
-            print("Unrecognized segue: \(segue)")
+            print("CDVC\tUnrecognized segue: \(segue)")
         }
 
     }

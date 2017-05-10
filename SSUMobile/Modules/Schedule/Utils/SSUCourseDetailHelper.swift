@@ -31,17 +31,17 @@ class SSUCourseDetailHelper {
         }
         else if ((facilityID?.range(of: "STEV")) != nil){
             let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 4)
-            building = "Stevenson"
+            building = "Stevenson Hall"
             room = (facilityID?.substring(from: index!))!
         }
         else if ((facilityID?.range(of: "NICH")) != nil){
             let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 4)
-            building = "Nichols"
+            building = "Nichols Hall"
             room = (facilityID?.substring(from: index!))!
         }
         else if ((facilityID?.range(of: "SALZ")) != nil){
             let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 4)
-            building = "International Hall"
+            building = "Salazar Hall"
             room = (facilityID?.substring(from: index!))!
         }
         else if ((facilityID?.range(of: "DARW")) != nil){
@@ -56,13 +56,13 @@ class SSUCourseDetailHelper {
         }
         else if ((facilityID?.range(of: "GMC SCHRDH")) != nil){
             // let index = facility?.index((facility?.startIndex)!, offsetBy: 2)
-            building = "GMC Schroeder Hall"
-            room = ""
+            building = "Green Music Center"
+            room = "Schroeder Hall"
         }
         else if ((facilityID?.range(of: "GMC WEILL")) != nil){
             // let index = facility?.index((facility?.startIndex)!, offsetBy: 2)
-            building = "GMC: Weill Hall"
-            room = ""
+            building = "Green Music Center"
+            room = "Weill Hall"
         }
         else if ((facilityID?.range(of: "IVES")) != nil){
             let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 4)
@@ -76,7 +76,7 @@ class SSUCourseDetailHelper {
         }
         else if ((facilityID?.range(of: "SHLZ")) != nil){
             let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 4)
-            building = "Schulz"
+            building = "Schulz Information Center"
             room = (facilityID?.substring(from: index!))!
         }
         else if ((facilityID?.range(of: "CHALK HILL")) != nil){
@@ -106,7 +106,7 @@ class SSUCourseDetailHelper {
         }
         else if ((facilityID?.range(of: "UKIAH")) != nil){
             // let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 5)
-            building = "Ukiah"
+            building = ""
             room = "" // (facilityID?.substring(from: index!))!
         }
         else if ((facilityID?.range(of: "OFF-SITE")) != nil){
@@ -116,7 +116,7 @@ class SSUCourseDetailHelper {
         }
         else if ((facilityID?.range(of: "ONLINE")) != nil){
             // let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 2)
-            building = "Online"
+            building = ""
             room = ""// (facilityID?.substring(from: index!))!
         }
         else{

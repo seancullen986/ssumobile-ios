@@ -42,7 +42,7 @@ class SSUCourseViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func transferClassInfo(course: SSUCourse) {
-        print("CourseViewCell:\ttransferClassInfo")
+        // print("CourseViewCell:\ttransferClassInfo")
         var f = ""
         var l = ""
         //let cd = UILabel(frame: CGRect(x: 10, y: 0, width: 365, height: 30))
