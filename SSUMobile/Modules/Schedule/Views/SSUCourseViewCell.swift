@@ -24,8 +24,6 @@ class SSUCourseViewCell: UITableViewCell {
         self.layer.cornerRadius = 10
         self.layer.borderColor = UIColorFromHex(rgbValue: 0x003268).cgColor // Dark blue
         self.layer.borderWidth = 1
-        // self.layer.backgroundColor = UIColorFromHex(rgbValue: 0x98BEE8).cgColor
-        // self.layer.backgroundColor = UIColorFromHex(rgbValue: 0xFFFFFF).cgColor
         self.layer.backgroundColor = UIColorFromHex(rgbValue: 0xFFFFFF).withAlphaComponent(0.6).cgColor
         
     }
@@ -36,21 +34,15 @@ class SSUCourseViewCell: UITableViewCell {
     }
     
     func transferClassInfo(course: SSUCourse) {
-        
         self.course = course
         stringForCell()
-        
-//        self.contentView.addSubview(ClassName!)
-//        self.contentView.addSubview(TimeFrame!)
-//        self.contentView.addSubview(Professor!)
-
     }
     
     
     func stringForCell(){
-        let instructor = "\(course?.first_name ?? "") - \(course?.last_name ?? "")"
+        let instructor = "\(course?.first_name ?? "Undecided") \(course?.last_name ?? "")"
         ClassName.text = "\(course?.subject ?? "[N/A]") \(course?.catalog ?? "[N/A]") - \(course?.component ?? "[N/A]")"
-        TimeFrame.text = "\(course?.start_time ?? "")-\(course?.end_time ?? "")"
+        TimeFrame.text = "\(course?.start_time ?? "[N/A]")-\(course?.end_time ?? "[M/A]")"
         Professor.text = instructor
     }
     

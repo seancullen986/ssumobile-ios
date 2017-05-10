@@ -87,6 +87,10 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
 
     }
     
+    static func addOrDelete(id: Int, state: Bool) {
+        
+    }
+    
     
     private func getNext (data: Any?, completion: (() -> Void)? = nil) {
         let builder = SSUCourseBuilder()
@@ -132,7 +136,7 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     // MARK: SSUModuleUI
     
     func imageForHomeScreen() -> UIImage? {
-        return UIImage(named: "schedule_icon") 
+        return UIImage(named: "schedule_Icon") 
     }
     
     func viewForHomeScreen() -> UIView? {

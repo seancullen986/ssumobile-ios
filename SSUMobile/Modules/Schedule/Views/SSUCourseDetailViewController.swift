@@ -6,18 +6,19 @@
 //  Copyright © 2017 Sonoma State University Department of Computer Science. All rights reserved.
 //
 
-
+import Foundation
 
 import UIKit
 
 class SSUCourseDetailViewController: UIViewController {
-    //var context: NSManagedObjectContext = SSUScheduleModule.instance.context!
+    var context: NSManagedObjectContext = SSUScheduleModule.instance.context!
     
     var classData: SSUCourse?
     var backgroundImageView: UIImageView?
     // var building: SSUBuilding?
     var buildingTapGesture: UITapGestureRecognizer?
     var personTapGesture: UITapGestureRecognizer?
+    var enrolled = false
     
     // Outlets to storyboard
     @IBOutlet weak var departmentView: UIView!
@@ -36,6 +37,7 @@ class SSUCourseDetailViewController: UIViewController {
     @IBOutlet weak var _combinedSection: UILabel!
     @IBOutlet weak var _designation: UILabel!
     @IBOutlet weak var _section: UILabel!
+    @IBOutlet weak var _addOrRemove: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,15 +53,15 @@ class SSUCourseDetailViewController: UIViewController {
         //        backgroundImageView = UIImageView(frame: self.view.bounds)
         //        backgroundImageView?.image = UIImage(named: "DetailsBackgroundImage")
         //        self.view.addSubview(backgroundImageView!)
-        
-        
+ 
+        let newButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(SSUScheduleTableViewController.doStuff))
 
        // buildingTapGesture = UITapGestureRecognizer(target: self._building, action: #selector(self.handleBuildingClick(_:)))
         //personTapGesture = UITapGestureRecognizer(target: self._instructor, action: #selector(self.handlePersonClick(_:)))
         
         //        _building.addGestureRecognizer(tapGesture!)
         roundViewCorners()
-        //buttonSetup()
+        buttonSetup()
         displayClassData()
     }
     
@@ -69,6 +71,23 @@ class SSUCourseDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func actionTriggered(sender: AnyObject) {
+        print("hello")
+    }
+    
+    func handleAddRemoveClick(sender: UITapGestureRecognizer){
+        if enrolled {
+            let c = NSEntityDescription.insertNewObject(forEntityName: "SSUSchedule", into: context) as! SSUSchedule
+            c.id = (classData?.id)!
+            
+            do{
+                try context.save()
+            }catch {}
+
+        } else {
+            
+        }
+    }
     
     func handleBuildingClick(sender: UITapGestureRecognizer){
         performSegue(withIdentifier: "building", sender: self)
@@ -84,39 +103,41 @@ class SSUCourseDetailViewController: UIViewController {
         classData = course
     }
     
-//    func buttonSetup() {
-//        if isAdd() {
-//            _addOrDelete.setTitle("ADD", for: .normal)
-//            _addOrDelete.layer.backgroundColor = UIColorFromHex(rgbValue: 0x428bca).cgColor
-//        } else {
-//            _addOrDelete.setTitle("DELETE", for: .normal)
-//            _addOrDelete.layer.backgroundColor = UIColorFromHex(rgbValue: 0xd9534f).cgColor
-//        }
-//    }
+    func buttonSetup() {
+        if isAdd() {
+            _addOrRemove.setTitle("ADD", for: .normal)
+            _addOrRemove.layer.backgroundColor = UIColorFromHex(rgbValue: 0x428bca).cgColor
+            enrolled = false
+        } else {
+            _addOrRemove.setTitle("DELETE", for: .normal)
+            _addOrRemove.layer.backgroundColor = UIColorFromHex(rgbValue: 0xd9534f).cgColor
+            enrolled = true
+        }
+    }
     
-//    func isAdd() -> Bool {
-//        let fetchRequest: NSFetchRequest<SSUSchedule> = SSUSchedule.fetchRequest()
-//
-//        let x = (classData?.id)!
-//        let n = NSNumber(value: x)
-//        let pred: NSPredicate = NSPredicate(format: "id = %i", n as NSNumber)
-//        
-//        fetchRequest.predicate = pred
-//        do {
-//            let responce = try context.fetch(fetchRequest)
-//            if(!(responce.isEmpty)) {
-//                return true
-//            }
-//            
-//        } catch {
-//            SSULogging.logError("Error fetching schedule: \(error)")
-//            
-//            
-//        }
-//        
-//        return false
-//
-//    }
+    func isAdd() -> Bool {
+        let fetchRequest: NSFetchRequest<SSUSchedule> = SSUSchedule.fetchRequest()
+
+        let x = (classData?.id)!
+        let n = NSNumber(value: x)
+        let pred: NSPredicate = NSPredicate(format: "id = %i", n as NSNumber)
+        
+        fetchRequest.predicate = pred
+        do {
+            let responce = try context.fetch(fetchRequest)
+            if((responce.isEmpty)) {
+                return true
+            }
+            
+        } catch {
+            SSULogging.logError("Error fetching schedule: \(error)")
+            
+            
+        }
+        
+        return false
+
+    }
     
     
     func displayClassData(){

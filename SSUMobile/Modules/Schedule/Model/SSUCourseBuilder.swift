@@ -64,6 +64,33 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         return obj
     }
     
+//    static func delete(_ num: Int64 ) {
+//        let fetchRequest: NSFetchRequest<SSUSchedule> = SSUSchedule.fetchRequest()
+//        let n = NSNumber(value: num)
+//        let pred: NSPredicate = NSPredicate(format: "id = %i", n as NSNumber)
+//        var schedule = []
+//        fetchRequest.predicate = pred
+//        do {
+//            schedule = try SSUScheduleModule.instance.context.fetch(fetchRequest)
+//        } catch {
+//            SSULogging.logError("Error fetching schedule: \(error)")
+//        }
+//   
+//        for dead in schedule {
+//            context.delete(dead)
+//        }
+//        SSUScheduleModule.instance.context.save()
+//    }
+    
+//    static func add(_ num: Int64) {
+//        let newItem = NSEntityDescription.insertNewObject(forEntityName: "SSUSchedule", into: SSUScheduleModule.instance.context) as NSManagedObject
+//        let date:NSDate = date
+//        newItem.setValue(date, forKey: "last_run")
+//        do {
+//            _ = try SSUScheduleModule.instance.context.save()
+//        } catch { }
+//    }
+    
     static func date() -> NSDate? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SSUTimeTracker")
         

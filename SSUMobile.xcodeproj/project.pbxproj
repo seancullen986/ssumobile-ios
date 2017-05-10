@@ -192,14 +192,14 @@
 		DB1F587A1EC15EC70059EFE8 /* SSUCatalogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1F58791EC15EC70059EFE8 /* SSUCatalogTableViewController.swift */; };
 		DB2A64691EBE9364008726BB /* SSUScheduleTableViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64681EBE9364008726BB /* SSUScheduleTableViewContorller.swift */; };
 		DB2A646B1EBE9480008726BB /* SSUCourseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646A1EBE9480008726BB /* SSUCourseViewCell.swift */; };
-		DB2A646D1EBE9593008726BB /* SSUCourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */; };
 		DB2A64701EBE97D5008726BB /* SSUColorsFromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646F1EBE97D5008726BB /* SSUColorsFromHex.swift */; };
-		DB2A64721EBE9AD4008726BB /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB2A64711EBE9AD4008726BB /* Schedule.storyboard */; };
 		DB2A64771EBEA2B3008726BB /* SSUCourse+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64731EBEA2B3008726BB /* SSUCourse+CoreDataClass.swift */; };
 		DB2A64781EBEA2B3008726BB /* SSUCourse+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64741EBEA2B3008726BB /* SSUCourse+CoreDataProperties.swift */; };
 		DB2A64791EBEA2B3008726BB /* SSUSchedule+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64751EBEA2B3008726BB /* SSUSchedule+CoreDataClass.swift */; };
 		DB2A647A1EBEA2B3008726BB /* SSUSchedule+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64761EBEA2B3008726BB /* SSUSchedule+CoreDataProperties.swift */; };
 		DB2A647C1EBEA541008726BB /* ClassSchedule.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB2A647B1EBEA541008726BB /* ClassSchedule.xcassets */; };
+		DB44582E1EC3C1EE00FC3049 /* SSUCourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */; };
+		DB4458301EC3C26500FC3049 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB2A64711EBE9AD4008726BB /* Schedule.storyboard */; };
 		FB0C64796E6A63FF0E4176E4 /* Pods_SSUMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFEFE76E20960FEACAD3748 /* Pods_SSUMobileTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -1664,6 +1664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07F84D8119F5885B0046D148 /* About.storyboard in Resources */,
+				DB4458301EC3C26500FC3049 /* Schedule.storyboard in Resources */,
 				0708BA6B1EA0A04700D67C85 /* Debug.xcassets in Resources */,
 				07FD09031BA082AE005C38DD /* Calendar.xcassets in Resources */,
 				071E23A619E284F400483138 /* licenses.txt in Resources */,
@@ -1693,7 +1694,6 @@
 				0711E8021E878C1F00F9ACDE /* Launch Screen.storyboard in Resources */,
 				07FD090B1BA084B0005C38DD /* News.xcassets in Resources */,
 				0733E1091E57F99300C85A53 /* SSUWebViewController.storyboard in Resources */,
-				DB2A64721EBE9AD4008726BB /* Schedule.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1831,6 +1831,7 @@
 				C4A7BE5D16B9F19600B919F0 /* SSUDepartmentViewController.m in Sources */,
 				C4A7BE6316BA139100B919F0 /* SSUDirectoryConstants.m in Sources */,
 				074F530D1B707DA700F97BCA /* SSUBuildingTableViewCell.m in Sources */,
+				DB44582E1EC3C1EE00FC3049 /* SSUCourseDetailViewController.swift in Sources */,
 				0785A1841E8F6B84007D16D4 /* SSUCalendarModule.swift in Sources */,
 				0785A1A51E960BD8007D16D4 /* SSUCalendarCollectionCell.swift in Sources */,
 				0733E1061E57F99300C85A53 /* SSUSearchableTableViewController.m in Sources */,
@@ -1895,7 +1896,6 @@
 				0760DC331A5FD060001D04F9 /* SSUDirectoryDetailController.m in Sources */,
 				0733E0F91E57F99300C85A53 /* SSUMoonlightCommunicator.m in Sources */,
 				0708BA6A1EA09B1D00D67C85 /* SSUDebugModule.swift in Sources */,
-				DB2A646D1EBE9593008726BB /* SSUCourseDetailViewController.swift in Sources */,
 				78A5EDEA16E6E5D30078FBB0 /* BuildingPerimeter+properties.m in Sources */,
 				0785A1871E8F72E8007D16D4 /* SSUConfiguration+Calendar.swift in Sources */,
 				07E8A21F1D6428C3007246A8 /* SSUDirectorySpotlightUtilities.m in Sources */,
