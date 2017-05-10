@@ -126,12 +126,12 @@ class SSUCatalogTableViewController: UITableViewController  {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "courseToDetails"{
+        if segue.identifier == "catalogCourseToDetails"{
             let cell = sender as! SSUCourseViewCell
             if let indexPath = tableView.indexPath(for: cell), let aClass = catalog?[(indexPath.row)] {
                 
                 print("CSTVC:\tprepare:\tsection = \((indexPath.section))\trow = \((indexPath.row))")
-                print("printing oldClass:")
+//                print("printing oldClass:")
                 
                 let detailsVC = segue.destination as! SSUCourseDetailViewController
                 detailsVC.passClassData(aClass)

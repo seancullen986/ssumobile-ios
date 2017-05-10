@@ -36,6 +36,9 @@ class SSUCourseDetailViewController: UIViewController {
     @IBOutlet weak var _designation: UILabel!
     @IBOutlet weak var _section: UILabel!
     
+    @IBOutlet weak var instructorButton: UIButton!
+    @IBOutlet weak var buildingButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -53,10 +56,15 @@ class SSUCourseDetailViewController: UIViewController {
         
         
 
-       // buildingTapGesture = UITapGestureRecognizer(target: self._building, action: #selector(self.handleBuildingClick(_:)))
-        //personTapGesture = UITapGestureRecognizer(target: self._instructor, action: #selector(self.handlePersonClick(_:)))
+//        buildingTapGesture = UITapGestureRecognizer(target: self.buildingButton, action: #selector(self.handleBuildingClick(_:)))
+//        personTapGesture = UITapGestureRecognizer(target: self.instructorButton, action: #selector(self.handlePersonClick(_:)))
+//        
+//        _building.addGestureRecognizer(buildingTapGesture!)
+//        _instructor.addGestureRecognizer(personTapGesture!)
         
-        //        _building.addGestureRecognizer(tapGesture!)
+        instructorButton.addTarget(self, action: #selector(handlePersonClick), for: .touchUpInside)
+        buildingButton.addTarget(self, action: #selector(handleBuildingClick), for: .touchUpInside)
+        
         roundViewCorners()
         displayClassData()
     }
@@ -68,42 +76,56 @@ class SSUCourseDetailViewController: UIViewController {
     }
     
     
-    func handleBuildingClick(sender: UITapGestureRecognizer){
+    func handleBuildingClick(/*_ sender: UITapGestureRecognizer*/){
+        print("Reached handleBuildingClick function")
         performSegue(withIdentifier: "building", sender: self)
     }
     
     
-    func handlePersonClick(sender: UITapGestureRecognizer){
+    func handlePersonClick(/*_ sender: UITapGestureRecognizer*/){
+        print("Reached handlePersonClick function")
         performSegue(withIdentifier: "person", sender: self)
     }
     
     
     func passClassData(_ course: SSUCourse){
         classData = course
+        dump(classData)
     }
     
     
     func displayClassData(){
+//        print("SCDVC\tdisplayClassData:\tprinting class data")
 
         _className.text = (classData?.subject)! + " " + (classData?.catalog)!
         
-        _description.text = classData?.description
+        _description.text = (classData?.description)!
 
         _instructor.text = "Instructor: " + (classData?.first_name)! + " " + (classData?.last_name)!
         _days.text = getDays(standardMeetingPattern: (classData?.meeting_pattern)!)
         _time.text = (classData?.start_time)! + "-" + (classData?.end_time)!
         
-        if classData?.component == "ACT"{
+        switch (classData?.component)! {
+        case "ACT":
             _component.text = "Activity"
-        }
-        else if classData?.component == "LEC"{
+        case "LEC":
             _component.text = "Lecture"
-        }
-        else{
+        case "DIS":
             _component.text = "Discussion"
+        default:
+            _component.text = ""
         }
+//        if classData?.component == "ACT"{
+//            _component.text = "Activity"
+//        }
+//        else if classData?.component == "LEC"{
+//            _component.text = "Lecture"
+//        }
+//        else if {
+//            _component.text = "Discussion"
+//        }
         _units.text = "Units: " + "\((classData?.max_units)!)"
-        if ( (classData?.combined_section)! != "" ){
+        if ( (classData?.combined_section)! != nil ){
             _combinedSection.text = "Combined Section? Yes"
         }
         else{
@@ -166,26 +188,35 @@ class SSUCourseDetailViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "building"{
-//            let building: SSUBuilding = SSUDirectoryBuilder.building(withName: (classData?.building)!, in: SSUDirectoryModule.instance.context)
-//            let controller: SSUDirectoryViewController = segue.destination as! SSUDirectoryViewController
-//            let predicate = NSPredicate(format: "building = %@", building)
-//            controller.defaultPredicate = predicate
-//            controller.entities = [SSUDirectoryEntityPerson, SSUDirectoryEntityDepartment, SSUDirectoryEntitySchool]
-//            controller.loadEntityName(SSUDirectoryEntityDepartment, using: nil)
-//        }
-//        else if segue.identifier == "person"{
-//            let person: SSUPerson = SSUDirectoryBuilder.personWithFirstName((classData?.first_name)!, (classData?.last_name)! , SSUDirectoryModule.instance.context)
-//            let controller: SSUDirectoryViewController = segue.destination as! SSUDirectoryViewController
-//            let predicate = NSPredicate(format: "person = %@", person)
-//            controller.defaultPredicate = predicate
-//            controller.entities = [SSUDirectoryEntityDepartment, SSUDirectoryEntityBuilding, SSUDirectoryEntitySchool]
-//            controller.loadEntityName(SSUDirectoryEntityDepartment, using: nil)
-//        }
-//        else{
-//            print("Unrecognized segue: \(segue)")
-//        }
-//
+        if segue.identifier == "building"{
+            if let f_id = classData?.facility_id {
+                let add_details = SSUCourseDetailHelper.location(f_id)
+                let _building = add_details.building
+                let _room = add_details.room
+            
+                
+                let building: SSUBuilding = SSUDirectoryBuilder.building(withName: (_building)!, in: SSUDirectoryModule.instance.context)
+                let controller: SSUDirectoryViewController = segue.destination as! SSUDirectoryViewController
+                let predicate = NSPredicate(format: "building = %@", building)
+                controller.defaultPredicate = predicate
+                controller.entities = [SSUDirectoryEntityPerson, SSUDirectoryEntityDepartment, SSUDirectoryEntitySchool]
+                controller.loadEntityName(SSUDirectoryEntityBuilding, using: nil)
+            }
+        }
+        else if segue.identifier == "person"{
+            let person: SSUPerson = SSUDirectoryBuilder.person(withFirstName: (classData?.first_name)!, andLastName: (classData?.last_name)! , in: SSUDirectoryModule.instance.context)
+            let controller: SSUDirectoryViewController = segue.destination as! SSUDirectoryViewController
+            let predicate = NSPredicate(format: "person = %@", person)
+            
+            
+            controller.defaultPredicate = predicate
+            controller.entities = [SSUDirectoryEntityDepartment, SSUDirectoryEntityBuilding, SSUDirectoryEntitySchool]
+            controller.loadEntityName(SSUDirectoryEntityPerson, using: nil)
+        }
+        else{
+            print("Unrecognized segue: \(segue)")
+        }
+
     }
     
 }

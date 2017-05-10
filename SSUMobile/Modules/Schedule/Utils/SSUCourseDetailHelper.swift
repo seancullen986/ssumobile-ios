@@ -36,7 +36,7 @@ class SSUCourseDetailHelper {
         }
         else if ((facilityID?.range(of: "NICH")) != nil){
             let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 4)
-            building = "Nicholas"
+            building = "Nichols"
             room = (facilityID?.substring(from: index!))!
         }
         else if ((facilityID?.range(of: "SALZ")) != nil){

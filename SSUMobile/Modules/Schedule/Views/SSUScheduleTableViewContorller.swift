@@ -242,9 +242,9 @@ class SSUScheduleTableViewController: UITableViewController  {
 //            
 //            
 //            self.navigationController?.pushViewController(vc, animated:true)
-////            if let catalog = segue.destination as? SSUCatalogTableViewController {
-////                catalog.title = "HI"
-////            }
+//            if let catalog = segue.destination as? SSUCatalogTableViewController {
+//                catalog.title = "HI"
+//            }
 //        }
     }
     
