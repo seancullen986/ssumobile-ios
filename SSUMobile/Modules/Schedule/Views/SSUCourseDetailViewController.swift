@@ -11,7 +11,10 @@ import UIKit
 class SSUCourseDetailViewController: UIViewController {
     var classData: SSUCourse?
     var backgroundImageView: UIImageView?
-    // var building: SSUBuilding?
+    
+    var building: SSUBuilding?
+    var person: SSUPerson?
+    
     var buildingTapGesture: UITapGestureRecognizer?
     var personTapGesture: UITapGestureRecognizer?
     
@@ -125,11 +128,11 @@ class SSUCourseDetailViewController: UIViewController {
 //            _component.text = "Discussion"
 //        }
         _units.text = "Units: " + "\((classData?.max_units)!)"
-        if ( (classData?.combined_section)! != nil ){
-            _combinedSection.text = "Combined Section? Yes"
+        if ( classData?.combined_section == nil ){
+            _combinedSection.text = "Combined Section? No"
         }
         else{
-            _combinedSection.text = "Combined Section? No"
+            _combinedSection.text = "Combined Section? Yes"
         }
         _designation.text = "Designation: " + "\((classData?.designation)!)"
         _section.text = "Section " + "\((classData?.section)!)"
@@ -191,27 +194,28 @@ class SSUCourseDetailViewController: UIViewController {
         if segue.identifier == "building"{
             if let f_id = classData?.facility_id {
                 let add_details = SSUCourseDetailHelper.location(f_id)
-                let _building = add_details.building
-                let _room = add_details.room
+                let Building = add_details.building
+                let Room = add_details.room
             
                 
-                let building: SSUBuilding = SSUDirectoryBuilder.building(withName: (_building)!, in: SSUDirectoryModule.instance.context)
-                let controller: SSUDirectoryViewController = segue.destination as! SSUDirectoryViewController
-                let predicate = NSPredicate(format: "building = %@", building)
-                controller.defaultPredicate = predicate
-                controller.entities = [SSUDirectoryEntityPerson, SSUDirectoryEntityDepartment, SSUDirectoryEntitySchool]
-                controller.loadEntityName(SSUDirectoryEntityBuilding, using: nil)
+                building = SSUDirectoryBuilder.building(withName: (Building)!, in: SSUDirectoryModule.instance.context)
+                let controller = segue.destination as! SSUBuildingViewController
+                controller.loadObject(self.building, in: self.building?.managedObjectContext)
+                //controller.load(Object: self.building, inContext: self.building.managedObjectContext)
+                // let predicate = NSPredicate(format: "building = %@", building)
+                // controller.defaultPredicate = predicate
+                // controller.entities = [SSUDirectoryEntityPerson, SSUDirectoryEntityDepartment, SSUDirectoryEntitySchool]
+                // controller.loadEntityName(SSUDirectoryEntityBuilding, using: nil)
             }
         }
         else if segue.identifier == "person"{
-            let person: SSUPerson = SSUDirectoryBuilder.person(withFirstName: (classData?.first_name)!, andLastName: (classData?.last_name)! , in: SSUDirectoryModule.instance.context)
-            let controller: SSUDirectoryViewController = segue.destination as! SSUDirectoryViewController
-            let predicate = NSPredicate(format: "person = %@", person)
-            
-            
-            controller.defaultPredicate = predicate
-            controller.entities = [SSUDirectoryEntityDepartment, SSUDirectoryEntityBuilding, SSUDirectoryEntitySchool]
-            controller.loadEntityName(SSUDirectoryEntityPerson, using: nil)
+            person = SSUDirectoryBuilder.person(withFirstName: (classData?.first_name)!, andLastName: (classData?.last_name)! , in: SSUDirectoryModule.instance.context)
+            let controller = segue.destination as! SSUPersonViewController
+            controller.loadObject(self.person, in: self.person?.managedObjectContext)
+            // let predicate = NSPredicate(format: "person = %@", person)
+            // controller.defaultPredicate = predicate
+            // controller.entities = [SSUDirectoryEntityDepartment, SSUDirectoryEntityBuilding, SSUDirectoryEntitySchool]
+            // controller.loadEntityName(SSUDirectoryEntityPerson, using: nil)
         }
         else{
             print("Unrecognized segue: \(segue)")

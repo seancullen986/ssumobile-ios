@@ -46,7 +46,7 @@ class SSUCourseDetailHelper {
         }
         else if ((facilityID?.range(of: "DARW")) != nil){
             let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 4)
-            building = "Darwin"
+            building = "Darwin Hall"
             room = (facilityID?.substring(from: index!))!
         }
         else if ((facilityID?.range(of: "GMC")) != nil){
@@ -98,6 +98,11 @@ class SSUCourseDetailHelper {
             // let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 6)
             building = "Tennis Courts"
             room = "" // (facilityID?.substring(from: index!))!
+        }
+        else if ((facilityID?.range(of: "ARTS")) != nil){
+            let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 4)
+            building = "Art Building"
+            room = (facilityID?.substring(from: index!))!
         }
         else if ((facilityID?.range(of: "UKIAH")) != nil){
             // let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 5)

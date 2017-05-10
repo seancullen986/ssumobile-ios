@@ -140,6 +140,7 @@
 		07FD09111BA08548005C38DD /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07FD09101BA08548005C38DD /* Map.xcassets */; };
 		301B08B71EB1583000C0769E /* SSURadioCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 301B08B61EB1583000C0769E /* SSURadioCalendarViewController.m */; };
 		32597B97B76EBBC89FACB276 /* Pods_SSUMobile_SSUMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32ABF172766A61AEA3D7C928 /* Pods_SSUMobile_SSUMobileTests.framework */; };
+		3F8A2DA61EC2C6F70092B022 /* SSUCourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */; };
 		414E70C1B66B29136704BB07 /* Pods_SSUMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15D260ED7782DBBDDB90284 /* Pods_SSUMobile.framework */; };
 		7801C3C116E6FE4600119B63 /* SSUMapBuildingPerimeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C3C016E6FE4600119B63 /* SSUMapBuildingPerimeter.m */; };
 		7801C3D316E8233900119B63 /* SSUMapLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C3D216E8233700119B63 /* SSUMapLocation.m */; };
@@ -190,7 +191,6 @@
 		DB1F587A1EC15EC70059EFE8 /* SSUCatalogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1F58791EC15EC70059EFE8 /* SSUCatalogTableViewController.swift */; };
 		DB2A64691EBE9364008726BB /* SSUScheduleTableViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64681EBE9364008726BB /* SSUScheduleTableViewContorller.swift */; };
 		DB2A646B1EBE9480008726BB /* SSUCourseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646A1EBE9480008726BB /* SSUCourseViewCell.swift */; };
-		DB2A646D1EBE9593008726BB /* SSUCourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */; };
 		DB2A64701EBE97D5008726BB /* SSUColorsFromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646F1EBE97D5008726BB /* SSUColorsFromHex.swift */; };
 		DB2A64721EBE9AD4008726BB /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB2A64711EBE9AD4008726BB /* Schedule.storyboard */; };
 		DB2A64771EBEA2B3008726BB /* SSUCourse+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A64731EBEA2B3008726BB /* SSUCourse+CoreDataClass.swift */; };
@@ -1819,6 +1819,7 @@
 				077475701A6CA5ED0094EB15 /* SSUMapPopoverContentController.m in Sources */,
 				C40035A116B9C6BC00B27F93 /* SSUPersonViewController.m in Sources */,
 				C40035AF16B9DFAF00B27F93 /* SSUPersonContainerViewController.m in Sources */,
+				3F8A2DA61EC2C6F70092B022 /* SSUCourseDetailViewController.swift in Sources */,
 				0741C9551A8727BA000B7BC6 /* SSUEmailLoginViewController.m in Sources */,
 				07D1A36118E2D52600B98565 /* SSUSchool.m in Sources */,
 				C4A7BE5D16B9F19600B919F0 /* SSUDepartmentViewController.m in Sources */,
@@ -1887,7 +1888,6 @@
 				0760DC331A5FD060001D04F9 /* SSUDirectoryDetailController.m in Sources */,
 				0733E0F91E57F99300C85A53 /* SSUMoonlightCommunicator.m in Sources */,
 				0708BA6A1EA09B1D00D67C85 /* SSUDebugModule.swift in Sources */,
-				DB2A646D1EBE9593008726BB /* SSUCourseDetailViewController.swift in Sources */,
 				78A5EDEA16E6E5D30078FBB0 /* BuildingPerimeter+properties.m in Sources */,
 				0785A1871E8F72E8007D16D4 /* SSUConfiguration+Calendar.swift in Sources */,
 				07E8A21F1D6428C3007246A8 /* SSUDirectorySpotlightUtilities.m in Sources */,
