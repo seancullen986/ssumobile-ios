@@ -11,7 +11,7 @@
 import UIKit
 
 class SSUCourseDetailViewController: UIViewController {
-    var context: NSManagedObjectContext = SSUScheduleModule.instance.context!
+    //var context: NSManagedObjectContext = SSUScheduleModule.instance.context!
     
     var classData: SSUCourse?
     var backgroundImageView: UIImageView?
