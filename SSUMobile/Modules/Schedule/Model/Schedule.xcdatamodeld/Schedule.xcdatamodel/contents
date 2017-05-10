@@ -16,7 +16,7 @@
         <attribute name="end_time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="facility_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
         <attribute name="instructor_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="k_factor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
@@ -39,8 +39,12 @@
         <attribute name="start_time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="SSUTimeTracker" representedClassName="SSUTimeTracker" syncable="YES">
+        <attribute name="last_run" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
     <elements>
         <element name="SSUCourse" positionX="-288" positionY="-261" width="128" height="495"/>
         <element name="SSUSchedule" positionX="-279" positionY="-99" width="128" height="120"/>
+        <element name="SSUTimeTracker" positionX="-279" positionY="-108" width="128" height="60"/>
     </elements>
 </model>

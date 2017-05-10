@@ -44,11 +44,10 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         static let workload_factor = "workload_factor"
     }
     
-    var jsonResults: JSON?
-    var js: Any?
-    var arrOJ: [[JSON]] = []
-    //var arrOJ: [Dictionary<String, Any>] = []
-    //var arrOJ: JSON?
+    //var jsonResults: JSON?
+    //var js: Any?
+    //var arrOJ: [[JSON]] = []
+
     
     static func course(withID id: Int, inContext: NSManagedObjectContext) -> SSUCourse? {
         if id <= 0 {
@@ -65,8 +64,40 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         return obj
     }
     
+    static func date() -> NSDate? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SSUTimeTracker")
+        
+        request.returnsObjectsAsFaults = false
+        do {
+            if let results = try? SSUScheduleModule.instance.context.fetch(request) {
+                guard let rez = results as? [SSUTimeTracker] else {
+                    return nil
+                }
+                
+                if rez.count > 0 {
+                    return rez[rez.count - 1].last_run
+                    
+                }
+            }
+        }
+        return nil
+    }
+    
+    static func setDate(date: NSDate) {
+        let newItem = NSEntityDescription.insertNewObject(forEntityName: "SSUTimeTracker", into: SSUScheduleModule.instance.context) as NSManagedObject
+        let date:NSDate = date
+        newItem.setValue(date, forKey: "last_run")
+        do {
+        _ = try SSUScheduleModule.instance.context.save()
+        } catch { }
+    }
+    
     func fetchComplete(_ results: Any) -> (String, Any?) {
+        
+        if ((results as? Int) != nil) { return ("", nil) }
+        
         let data = JSON(results)
+        
         if let next = data.dictionaryValue["next"]?.string {
             if( next == "null" ) { return ("", nil)}
             if let arr = data.dictionaryValue["results"]?.arrayValue {
@@ -79,9 +110,9 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         return ("", nil)
     }
     
-    func getResults() -> Any? {
-        return arrOJ
-    }
+//    func getResults() -> Any? {
+//        return arrOJ
+//    }
     
     override func build(_ results: Any!) {
         SSULogging.logDebug("Building events")

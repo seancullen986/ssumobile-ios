@@ -94,6 +94,7 @@ class SSUScheduleTableViewController: UITableViewController  {
     }
     
     private func refresh() {
+
         SSUScheduleModule.instance.updateData({
             self.loadSchedule()
         })
@@ -108,14 +109,13 @@ class SSUScheduleTableViewController: UITableViewController  {
             SSULogging.logError("Error fetching schedule: \(error)")
             schedule = []
         }
-        
+        getCoursesInSchedule()
         DispatchQueue.main.async {
             self.reloadScheduleTableView()
         }
     }
     
     private func reloadScheduleTableView() {
-        getCoursesInSchedule()
         tableView.reloadData()
     }
 
@@ -226,7 +226,6 @@ class SSUScheduleTableViewController: UITableViewController  {
             if let indexPath = tableView.indexPath(for: cell), let oldClass = sects?[(indexPath.section)].courses[(indexPath.row)] {
                 
                 print("CSTVC:\tprepare:\tsection = \((indexPath.section))\trow = \((indexPath.row))")
-                print("printing oldClass:")
 
                 let detailsVC = segue.destination as! SSUCourseDetailViewController
                 detailsVC.passClassData(oldClass)

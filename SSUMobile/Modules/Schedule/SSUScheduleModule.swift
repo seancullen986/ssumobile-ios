@@ -13,6 +13,9 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     
     @objc(sharedInstance)
     static let instance = SSUScheduleModule()
+    static var jData: [Any] = []
+    static var nextAddress = ""
+    static var loading = false;
     
     // MARK: SSUModule
     
@@ -30,26 +33,48 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     
     
     func updateData(_ completion: (() -> Void)? = nil) {
+        
+        if SSUScheduleModule.loading { completion?() }
+        SSUScheduleModule.loading = true
         SSULogging.logDebug("Update Catalog")
         self.updateCatalog {
             completion?()
         }
     }
     
+    private func getDate() -> NSDate? {
+        return SSUCourseBuilder.date()
+    }
+    
+    private func setDate(date: NSDate) {
+        SSUCourseBuilder.setDate(date: date)
+    }
+    
     func updateCatalog(completion: (() -> Void)? = nil) {
+            let date = getDate() ?? NSDate()
+
+        if Calendar.current.isDate(date as Date, inSameDayAs:NSDate() as Date) {
+
             SSUMoonlightCommunicator.getJSONFromPath("catalog/course") { (response, json, error) in
-            if let error = error {
-                SSULogging.logError("Error while attemping to update Schedule Classes: \(error)")
-                completion?()
-            } else {
-                self.compile(json: json, next: "") {
+                if let error = error {
+                    SSULogging.logError("Error while attemping to update Schedule Classes: \(error)")
                     completion?()
+                } else {
+                    self.test(data: json) {
+                        completion?()
+                    }
                 }
             }
+            setDate(date: NSDate())
+        } else {
+            completion?()
         }
     }
     
-    private func fetchNext(url: URL, completion: @escaping (_ result: Any?) -> ()) {
+    func fetchNext(next: String, completion: @escaping (_ result: Any?) -> ()) {
+        guard let url = URL(string: next) else {
+            return completion(nil)
+        }
         
         SSUCommunicator.getJSONFrom(url) { (response, json, error) in
             if let error = error {
@@ -62,52 +87,78 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
 
     }
     
-    static var jData: [Any] = []
     
-    
-    
-    
-    private func compile(json: Any, next: String, completion: (() -> Void)? = nil) {
+    private func test (data: Any?, completion: (() -> Void)? = nil) {
         let builder = SSUCourseBuilder()
         builder.context = backgroundContext
         backgroundContext.perform {
-            var address = next
-            var data: Any?
-            if (address == "") {
-                (address, data) = builder.fetchComplete(json)
-            }
-            
-            if let x = data {
-                SSUScheduleModule.jData.append(x)
-            }
-            
-            if( address != "") {
 
-                if let url = URL(string: address) {
-                    self.fetchNext(url: url, completion: { (result) in
-                        if let more = result {
-                            (address, data) = builder.fetchComplete(more)
-                            
-                            if let x = data {
-                                SSUScheduleModule.jData.append(x)
-                            }
-                            
-                            self.compile(json: result as Any, next: address) {
-                                completion?()
-                            }
-                        } else { address = "" }
-                    })
+            var retJS: Any?
+            (SSUScheduleModule.nextAddress, retJS) = builder.fetchComplete(data ?? 0)
+                
+            if let js = retJS {
+                SSUScheduleModule.jData.append(js)
+            }
+            
+            if SSUScheduleModule.nextAddress != "" {
+                self.fetchNext(next: SSUScheduleModule.nextAddress) { (result) in
+                    self.test(data: result)
+                    
                 }
-
-
             } else {
                 self.build(json: SSUScheduleModule.jData as Any ) {
                     completion?()
                 }
             }
+            
+                
         }
         
+        
+        
     }
+    
+    
+//    private func compile(json: Any, next: String, completion: (() -> Void)? = nil) {
+//        let builder = SSUCourseBuilder()
+//        builder.context = backgroundContext
+//        backgroundContext.perform {
+//            var address = next
+//            var data: Any?
+//            if (address == "") {
+//                (address, data) = builder.fetchComplete(json)
+//            }
+//            
+//            if let x = data {
+//                SSUScheduleModule.jData.append(x)
+//            }
+//            
+//            if( address != "") {
+//                if let url = URL(string: address) {
+//                    self.fetchNext(url: url, completion: { (result) in
+//                        if let more = result {
+//                            (address, data) = builder.fetchComplete(more)
+//                            
+//                            if let x = data {
+//                                SSUScheduleModule.jData.append(x)
+//                            }
+//                            
+//                            self.compile(json: result as Any, next: address) {
+//                                completion?()
+//                            }
+//                        } else { address = "" }
+//                    })
+//                }
+//
+//
+//            } else {
+//                self.build(json: SSUScheduleModule.jData as Any ) {
+//                    completion?()
+//                }
+//            }
+//        }
+//        
+//    }
 
     
     private func build(json: Any, completion: (() -> Void)? = nil) {

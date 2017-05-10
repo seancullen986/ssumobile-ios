@@ -21,19 +21,15 @@ class SSUCourseDetailViewController: UIViewController {
     
     // Outlets to storyboard
     @IBOutlet weak var departmentView: UIView!
-    @IBOutlet weak var _className: UILabel!
-    
     @IBOutlet weak var primaryInfoView: UIView!
     @IBOutlet weak var _description: UILabel!
-    // @IBOutlet weak var _className: UILabel!
+    @IBOutlet weak var _className: UILabel!
     @IBOutlet weak var _location: UILabel!
     @IBOutlet weak var _building: UILabel!
     @IBOutlet weak var _room: UILabel!
     @IBOutlet weak var _instructor: UILabel!
     @IBOutlet weak var _days: UILabel!
     @IBOutlet weak var _time: UILabel!
-    
-    @IBOutlet weak var _addOrDelete: UIButton!
     @IBOutlet weak var secondaryInfoView: UIView!
     @IBOutlet weak var _component: UILabel!
     @IBOutlet weak var _units: UILabel!

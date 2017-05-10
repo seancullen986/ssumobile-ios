@@ -56,9 +56,9 @@ class SSUCatalogTableViewController: UITableViewController  {
     }
     
     private func refresh() {
-        SSUScheduleModule.instance.updateData({
+        //SSUScheduleModule.instance.updateData({
             self.loadSchedule()
-        })
+        //})
     }
     
     private func loadSchedule() {
