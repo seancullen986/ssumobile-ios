@@ -6,6 +6,8 @@
 //  Copyright © 2017 Sonoma State University Department of Computer Science. All rights reserved.
 //
 
+
+
 import UIKit
 
 class SSUCourseDetailViewController: UIViewController {
@@ -61,7 +63,7 @@ class SSUCourseDetailViewController: UIViewController {
         
         //        _building.addGestureRecognizer(tapGesture!)
         roundViewCorners()
-        buttonSetup()
+        //buttonSetup()
         displayClassData()
     }
     
@@ -86,34 +88,39 @@ class SSUCourseDetailViewController: UIViewController {
         classData = course
     }
     
-    func buttonSetup() {
-        if isAdd() {
-            _addOrDelete.titleLabel?.text = "ADD"
-            _addOrDelete.layer.backgroundColor = UIColorFromHex(rgbValue: 0x428bca).cgColor
-        } else {
-            _addOrDelete.titleLabel?.text = "Delete"
-            _addOrDelete.layer.backgroundColor = UIColorFromHex(rgbValue: 0xd9534f).cgColor
-        }
-    }
+//    func buttonSetup() {
+//        if isAdd() {
+//            _addOrDelete.setTitle("ADD", for: .normal)
+//            _addOrDelete.layer.backgroundColor = UIColorFromHex(rgbValue: 0x428bca).cgColor
+//        } else {
+//            _addOrDelete.setTitle("DELETE", for: .normal)
+//            _addOrDelete.layer.backgroundColor = UIColorFromHex(rgbValue: 0xd9534f).cgColor
+//        }
+//    }
     
-    func isAdd() -> Bool {
-        let fetchRequest: NSFetchRequest<SSUSchedule> = SSUSchedule.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@", (classData?.id)!)
-        do {
-            let responce = try context.fetch(fetchRequest)
-            if(!(responce.isEmpty)) {
-                return true
-            }
-            
-        } catch {
-            SSULogging.logError("Error fetching schedule: \(error)")
-            
-            
-        }
-        
-        return false
-
-    }
+//    func isAdd() -> Bool {
+//        let fetchRequest: NSFetchRequest<SSUSchedule> = SSUSchedule.fetchRequest()
+//
+//        let x = (classData?.id)!
+//        let n = NSNumber(value: x)
+//        let pred: NSPredicate = NSPredicate(format: "id = %i", n as NSNumber)
+//        
+//        fetchRequest.predicate = pred
+//        do {
+//            let responce = try context.fetch(fetchRequest)
+//            if(!(responce.isEmpty)) {
+//                return true
+//            }
+//            
+//        } catch {
+//            SSULogging.logError("Error fetching schedule: \(error)")
+//            
+//            
+//        }
+//        
+//        return false
+//
+//    }
     
     
     func displayClassData(){
