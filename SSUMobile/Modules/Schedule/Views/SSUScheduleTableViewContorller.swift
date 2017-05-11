@@ -18,7 +18,7 @@ class SSUScheduleTableViewController: UITableViewController  {
     var context: NSManagedObjectContext = SSUScheduleModule.instance.context!
     var backgroundImageView: UIImageView?
     private var schedule: [SSUSchedule]?
-    private var sects: [Sections]?
+    private var sects: [Sections]? = []
     
     private struct Sections {
         var title: String
@@ -107,7 +107,7 @@ class SSUScheduleTableViewController: UITableViewController  {
             schedule = try context.fetch(fetchRequest)
         } catch {
             SSULogging.logError("Error fetching schedule: \(error)")
-            schedule = []
+
         }
         getCoursesInSchedule()
         DispatchQueue.main.async {
@@ -134,7 +134,7 @@ class SSUScheduleTableViewController: UITableViewController  {
     
     
     func getDays(_ course: SSUCourse) -> [String]? {
-        var days: [String]?
+        var days: [String]? = []
         
         if (course.meeting_pattern?.range(of: "M") != nil){
             days!.append("Monday")

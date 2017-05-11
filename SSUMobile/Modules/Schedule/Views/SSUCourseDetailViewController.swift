@@ -75,7 +75,12 @@ class SSUCourseDetailViewController: UIViewController {
             }catch {}
             
         } else {
-           print("hello")
+            let c = NSEntityDescription.insertNewObject(forEntityName: "SSUSchedule", into: context) as! SSUSchedule
+            c.id = (classData?.id)!
+            
+            do{
+                try context.save()
+            }catch {}
         }
     }
     
