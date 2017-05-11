@@ -54,7 +54,7 @@ class SSUCourseDetailViewController: UIViewController {
         //        backgroundImageView?.image = UIImage(named: "DetailsBackgroundImage")
         //        self.view.addSubview(backgroundImageView!)
  
-        let newButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(SSUScheduleTableViewController.doStuff))
+        //_addOrRemovebarButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(SSUScheduleTableViewController.doStuff))
 
        // buildingTapGesture = UITapGestureRecognizer(target: self._building, action: #selector(self.handleBuildingClick(_:)))
         //personTapGesture = UITapGestureRecognizer(target: self._instructor, action: #selector(self.handlePersonClick(_:)))
@@ -63,6 +63,20 @@ class SSUCourseDetailViewController: UIViewController {
         roundViewCorners()
         buttonSetup()
         displayClassData()
+    }
+    
+    @IBAction func button(_ sender: Any) {
+        if enrolled {
+            let c = NSEntityDescription.insertNewObject(forEntityName: "SSUSchedule", into: context) as! SSUSchedule
+            c.id = (classData?.id)!
+            
+            do{
+                try context.save()
+            }catch {}
+            
+        } else {
+
+        }
     }
     
     
@@ -75,19 +89,7 @@ class SSUCourseDetailViewController: UIViewController {
         print("hello")
     }
     
-    func handleAddRemoveClick(sender: UITapGestureRecognizer){
-        if enrolled {
-            let c = NSEntityDescription.insertNewObject(forEntityName: "SSUSchedule", into: context) as! SSUSchedule
-            c.id = (classData?.id)!
-            
-            do{
-                try context.save()
-            }catch {}
-
-        } else {
-            
-        }
-    }
+    
     
     func handleBuildingClick(sender: UITapGestureRecognizer){
         performSegue(withIdentifier: "building", sender: self)

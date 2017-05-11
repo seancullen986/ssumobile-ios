@@ -233,6 +233,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="button:" destination="Wb6-gr-Mzg" eventType="touchUpInside" id="Gk7-qr-10m"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.59607843140000005" green="0.74509803919999995" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
