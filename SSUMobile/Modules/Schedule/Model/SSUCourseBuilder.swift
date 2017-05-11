@@ -44,11 +44,6 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         static let workload_factor = "workload_factor"
     }
     
-    //var jsonResults: JSON?
-    //var js: Any?
-    //var arrOJ: [[JSON]] = []
-
-    
     static func course(withID id: Int, inContext: NSManagedObjectContext) -> SSUCourse? {
         if id <= 0 {
             SSULogging.logError("Received invalid course id \(id)")
@@ -63,33 +58,6 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         
         return obj
     }
-    
-//    static func delete(_ num: Int64 ) {
-//        let fetchRequest: NSFetchRequest<SSUSchedule> = SSUSchedule.fetchRequest()
-//        let n = NSNumber(value: num)
-//        let pred: NSPredicate = NSPredicate(format: "id = %i", n as NSNumber)
-//        var schedule = []
-//        fetchRequest.predicate = pred
-//        do {
-//            schedule = try SSUScheduleModule.instance.context.fetch(fetchRequest)
-//        } catch {
-//            SSULogging.logError("Error fetching schedule: \(error)")
-//        }
-//   
-//        for dead in schedule {
-//            context.delete(dead)
-//        }
-//        SSUScheduleModule.instance.context.save()
-//    }
-    
-//    static func add(_ num: Int64) {
-//        let newItem = NSEntityDescription.insertNewObject(forEntityName: "SSUSchedule", into: SSUScheduleModule.instance.context) as NSManagedObject
-//        let date:NSDate = date
-//        newItem.setValue(date, forKey: "last_run")
-//        do {
-//            _ = try SSUScheduleModule.instance.context.save()
-//        } catch { }
-//    }
     
     static func date() -> NSDate? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SSUTimeTracker")
@@ -137,9 +105,6 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
         return ("", nil)
     }
     
-//    func getResults() -> Any? {
-//        return arrOJ
-//    }
     
     override func build(_ results: Any!) {
         SSULogging.logDebug("Building events")

@@ -94,10 +94,9 @@ class SSUScheduleTableViewController: UITableViewController  {
     }
     
     private func refresh() {
-
-        SSUScheduleModule.instance.updateData({
+        //SSUScheduleModule.instance.updateData({
             self.loadSchedule()
-        })
+        //})
     }
     
     private func loadSchedule() {
@@ -110,12 +109,14 @@ class SSUScheduleTableViewController: UITableViewController  {
 
         }
         getCoursesInSchedule()
+
         DispatchQueue.main.async {
             self.reloadScheduleTableView()
         }
     }
     
     private func reloadScheduleTableView() {
+        getCoursesInSchedule()
         tableView.reloadData()
     }
 
@@ -126,6 +127,7 @@ class SSUScheduleTableViewController: UITableViewController  {
                 for day in days {
                     if ( !((sects?.contains(where: { $0.title == day}))!) ) {
                         sects?.append(Sections(title: day, course: aCourse))
+                        
                     }
                 }
             }
