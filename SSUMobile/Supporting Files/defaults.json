@@ -9,6 +9,7 @@
         "resources",
         "email",
         "schedule",
+        "library",
     ],
     
     "edu.sonoma.radio.stream.enabled" : true,

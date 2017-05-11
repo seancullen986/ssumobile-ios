@@ -75,7 +75,7 @@ class SSUCourseDetailViewController: UIViewController {
             }catch {}
             
         } else {
-
+           print("hello")
         }
     }
     

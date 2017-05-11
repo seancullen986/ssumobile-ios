@@ -200,6 +200,13 @@
 		DB2A647C1EBEA541008726BB /* ClassSchedule.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB2A647B1EBEA541008726BB /* ClassSchedule.xcassets */; };
 		DB44582E1EC3C1EE00FC3049 /* SSUCourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A646C1EBE9593008726BB /* SSUCourseDetailViewController.swift */; };
 		DB4458301EC3C26500FC3049 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB2A64711EBE9AD4008726BB /* Schedule.storyboard */; };
+		DB8DDA311EC3E1E40058837A /* Library.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB8DDA2A1EC3E1E40058837A /* Library.xcassets */; };
+		DB8DDA321EC3E1E40058837A /* library_icon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DB8DDA2B1EC3E1E40058837A /* library_icon.pdf */; };
+		DB8DDA331EC3E1E40058837A /* Library_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB8DDA2C1EC3E1E40058837A /* Library_iPhone.storyboard */; };
+		DB8DDA341EC3E1E40058837A /* SSULibraryModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8DDA2D1EC3E1E40058837A /* SSULibraryModule.swift */; };
+		DB8DDA351EC3E1E40058837A /* SSULibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8DDA2E1EC3E1E40058837A /* SSULibraryViewController.swift */; };
+		DB8DDA361EC3E1E40058837A /* SSUStudyRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8DDA2F1EC3E1E40058837A /* SSUStudyRoomViewController.swift */; };
+		DB8DDA371EC3E1E40058837A /* studyroom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DB8DDA301EC3E1E40058837A /* studyroom.jpg */; };
 		FB0C64796E6A63FF0E4176E4 /* Pods_SSUMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFEFE76E20960FEACAD3748 /* Pods_SSUMobileTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -537,6 +544,13 @@
 		DB2A64751EBEA2B3008726BB /* SSUSchedule+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUSchedule+CoreDataClass.swift"; path = "Schedule/Model/Classes/SSUSchedule+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DB2A64761EBEA2B3008726BB /* SSUSchedule+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SSUSchedule+CoreDataProperties.swift"; path = "Schedule/Model/Classes/SSUSchedule+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DB2A647B1EBEA541008726BB /* ClassSchedule.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ClassSchedule.xcassets; path = Schedule/Resources/ClassSchedule.xcassets; sourceTree = "<group>"; };
+		DB8DDA2A1EC3E1E40058837A /* Library.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Library.xcassets; path = Library/Library.xcassets; sourceTree = "<group>"; };
+		DB8DDA2B1EC3E1E40058837A /* library_icon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = library_icon.pdf; path = Library/library_icon.pdf; sourceTree = "<group>"; };
+		DB8DDA2C1EC3E1E40058837A /* Library_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Library_iPhone.storyboard; path = Library/Library_iPhone.storyboard; sourceTree = "<group>"; };
+		DB8DDA2D1EC3E1E40058837A /* SSULibraryModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSULibraryModule.swift; path = Library/SSULibraryModule.swift; sourceTree = "<group>"; };
+		DB8DDA2E1EC3E1E40058837A /* SSULibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSULibraryViewController.swift; path = Library/SSULibraryViewController.swift; sourceTree = "<group>"; };
+		DB8DDA2F1EC3E1E40058837A /* SSUStudyRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSUStudyRoomViewController.swift; path = Library/SSUStudyRoomViewController.swift; sourceTree = "<group>"; };
+		DB8DDA301EC3E1E40058837A /* studyroom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = studyroom.jpg; path = Library/studyroom.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1513,6 +1527,7 @@
 		C4FBF74E16BB8FFD00BE95E3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DB8DDA291EC3E1B30058837A /* Library */,
 				0733E0C61E57F99300C85A53 /* Core */,
 				784315ED16D1CFE600B8552F /* Debug */,
 				07F84D7E19F5883E0046D148 /* About */,
@@ -1536,6 +1551,20 @@
 			);
 			name = Utils;
 			path = Schedule/Utils;
+			sourceTree = "<group>";
+		};
+		DB8DDA291EC3E1B30058837A /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				DB8DDA2A1EC3E1E40058837A /* Library.xcassets */,
+				DB8DDA2B1EC3E1E40058837A /* library_icon.pdf */,
+				DB8DDA2C1EC3E1E40058837A /* Library_iPhone.storyboard */,
+				DB8DDA2D1EC3E1E40058837A /* SSULibraryModule.swift */,
+				DB8DDA2E1EC3E1E40058837A /* SSULibraryViewController.swift */,
+				DB8DDA2F1EC3E1E40058837A /* SSUStudyRoomViewController.swift */,
+				DB8DDA301EC3E1E40058837A /* studyroom.jpg */,
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 		DBBED2AD1EBA9813003C8D16 /* Classes */ = {
@@ -1664,17 +1693,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				07F84D8119F5885B0046D148 /* About.storyboard in Resources */,
+				DB8DDA311EC3E1E40058837A /* Library.xcassets in Resources */,
 				DB4458301EC3C26500FC3049 /* Schedule.storyboard in Resources */,
 				0708BA6B1EA0A04700D67C85 /* Debug.xcassets in Resources */,
 				07FD09031BA082AE005C38DD /* Calendar.xcassets in Resources */,
 				071E23A619E284F400483138 /* licenses.txt in Resources */,
 				073215401E6BC97D00A18A13 /* Resources.sqlite in Resources */,
+				DB8DDA321EC3E1E40058837A /* library_icon.pdf in Resources */,
 				07C997D01A87119900534A1C /* Email.storyboard in Resources */,
 				07AB76D31C786E43006352C5 /* defaults.json in Resources */,
 				07C2FE1519C6C5D00016349C /* Radio_iPhone.storyboard in Resources */,
 				07CD3C021BBBB91E0075ADE8 /* Calendar.sqlite in Resources */,
 				073215441E6BC9B000A18A13 /* Map.sqlite in Resources */,
 				078000F819CFAA0D00FD1E2A /* Images.xcassets in Resources */,
+				DB8DDA371EC3E1E40058837A /* studyroom.jpg in Resources */,
 				C4995AFB16B1274200168521 /* MainStoryboard_iPhone.storyboard in Resources */,
 				079E2F0E1BB4BEAB00754A52 /* Map_Building.storyboard in Resources */,
 				07FD09051BA0833E005C38DD /* AppPicker.xcassets in Resources */,
@@ -1686,6 +1718,7 @@
 				07FD090E1BA084E1005C38DD /* Resources.xcassets in Resources */,
 				07FD09111BA08548005C38DD /* Map.xcassets in Resources */,
 				78FE792816C9D04500626462 /* Settings.bundle in Resources */,
+				DB8DDA331EC3E1E40058837A /* Library_iPhone.storyboard in Resources */,
 				784315F516D1DF2900B8552F /* Map_iPhone.storyboard in Resources */,
 				07FD09081BA08448005C38DD /* Radio.xcassets in Resources */,
 				DB2A647C1EBEA541008726BB /* ClassSchedule.xcassets in Resources */,
@@ -1805,6 +1838,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8DDA361EC3E1E40058837A /* SSUStudyRoomViewController.swift in Sources */,
 				0766F1871B4BA404003BD52C /* SSUMapBuilder.m in Sources */,
 				071E237819E2380B00483138 /* SSUResourcesViewController.m in Sources */,
 				07F54F691E888F2300D24EA7 /* SSUNewsViewController.swift in Sources */,
@@ -1925,10 +1959,12 @@
 				DB10EE5E1EBF25FD008CB4E5 /* SSUCourseDetailHelper.swift in Sources */,
 				074D135E1BA703FB0002899F /* Calendar.xcdatamodeld in Sources */,
 				0711E8121E8855B400F9ACDE /* SSUArticle+CoreDataProperties.swift in Sources */,
+				DB8DDA351EC3E1E40058837A /* SSULibraryViewController.swift in Sources */,
 				78A190B61717A0AA00D8768C /* SSUMapPoint.m in Sources */,
 				DB2A64691EBE9364008726BB /* SSUScheduleTableViewContorller.swift in Sources */,
 				301B08B71EB1583000C0769E /* SSURadioCalendarViewController.m in Sources */,
 				78A190B91718ADCD00D8768C /* SSUMapPolygon.m in Sources */,
+				DB8DDA341EC3E1E40058837A /* SSULibraryModule.swift in Sources */,
 				DB2A64701EBE97D5008726BB /* SSUColorsFromHex.swift in Sources */,
 				826184381EAEC00900F3152D /* SSUScheduleModule.swift in Sources */,
 				07A593BE1E9B1B0400D69DBB /* SSUDirectoryModule.swift in Sources */,
