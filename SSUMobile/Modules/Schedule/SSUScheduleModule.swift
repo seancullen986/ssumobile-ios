@@ -33,7 +33,6 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     
     
     func updateData(_ completion: (() -> Void)? = nil) {
-        
         if SSUScheduleModule.loading { completion?() }
         SSUScheduleModule.loading = true
         SSULogging.logDebug("Update Catalog")
@@ -51,7 +50,7 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
     }
     
     func updateCatalog(completion: (() -> Void)? = nil) {
-            let date = getDate() ?? NSDate()
+        let date = getDate() ?? NSDate()
 
         if Calendar.current.isDate(date as Date, inSameDayAs:NSDate() as Date) {
 
@@ -87,10 +86,6 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
 
     }
     
-    static func addOrDelete(id: Int, state: Bool) {
-        
-    }
-    
     
     private func getNext (data: Any?, completion: (() -> Void)? = nil) {
         let builder = SSUCourseBuilder()
@@ -114,8 +109,6 @@ final class SSUScheduleModule: SSUCoreDataModuleBase, SSUModuleUI {
                     completion?()
                 }
             }
-            
-                
         }
         
     }

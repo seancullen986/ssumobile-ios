@@ -71,7 +71,6 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
                 
                 if rez.count > 0 {
                     return rez[rez.count - 1].last_run
-                    
                 }
             }
         }
@@ -88,18 +87,14 @@ class SSUCourseBuilder: SSUMoonlightBuilder {
     }
     
     func fetchComplete(_ results: Any) -> (String, Any?) {
-        
         if ((results as? Int) != nil) { return ("", nil) }
-        
         let data = JSON(results)
         
         if let next = data.dictionaryValue["next"]?.string {
             if( next == "null" ) { return ("", nil)}
             if let arr = data.dictionaryValue["results"]?.arrayValue {
-                
                 return (next, arr)
             }
-            
         }
         
         return ("", nil)

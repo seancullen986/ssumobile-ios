@@ -153,7 +153,7 @@ class SSUCourseDetailViewController: UIViewController {
         
         _description.text = (classData?.descript ?? "")
         
-        _instructor.text = "Instructor: " + (classData?.first_name ?? "") + " " + (classData?.last_name ?? "")
+        _instructor.text = "Instructor: " + (classData?.first_name ?? "Staff") + " " + (classData?.last_name ?? "")
         _days.text = getDays(standardMeetingPattern: (classData?.meeting_pattern) ?? "[N/A]")
         _time.text = (classData?.start_time ?? "") + "-" + (classData?.end_time ?? "")
         

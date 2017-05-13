@@ -80,6 +80,11 @@ class SSUCatalogTableViewController: UITableViewController, UISearchResultsUpdat
     
     private func loadSchedule() {
         let fetchRequest: NSFetchRequest<SSUCourse> = SSUCourse.fetchRequest()
+        let sortDescriptor1 = NSSortDescriptor(key: "subject", ascending: true)
+        let sortDescriptor2 = NSSortDescriptor(key: "catalog", ascending: true)
+        //let sortDescriptor3 = NSSortDescriptor(key: "component", ascending: true)
+        let sortDescriptor4 = NSSortDescriptor(key: "section", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2, sortDescriptor4]
         
         do {
             catalog = try context.fetch(fetchRequest)

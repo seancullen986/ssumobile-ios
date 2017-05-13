@@ -24,17 +24,23 @@ class SSUScheduleTableViewController: UITableViewController  {
         var title: String
         var courses = [SSUCourse]()
         var count = 0
-        init(title: String, course: SSUCourse) {
+        init(title: String, courses: [SSUCourse]) {
             self.title = title
-            addOrIgnore(course)
+            self.courses = courses
+            self.count = courses.count
+            //addOrIgnore(course)
             
         }
-        mutating func addOrIgnore(_ course: SSUCourse) {
-            if ( !(courses.contains(where: { $0.id == course.id })) ) {
-                self.courses.append(course)
-                count = count + 1
-            }
-        }
+        
+//        @discardableResult
+//        mutating func addOrIgnore(_ course: SSUCourse) -> [SSUCourse] {
+//            if ( !(courses.contains(where: { $0.id == course.id })) ) {
+//                self.courses.append(course)
+//                self.count = self.count + 1
+//                
+//                return courses
+//            }
+//        }
         
     }
 
@@ -53,19 +59,18 @@ class SSUScheduleTableViewController: UITableViewController  {
         }
     
         
-        let newButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(SSUScheduleTableViewController.doStuff))
+        let newButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(SSUScheduleTableViewController.goToCatalog))
         self.navigationItem.rightBarButtonItem = newButton
         
         refresh()
     }
     
-    @IBAction func doStuff(sender: AnyObject) {
+    @IBAction func goToCatalog(sender: AnyObject) {
         guard let vc = UIStoryboard(name:"Schedule", bundle:nil).instantiateViewController(withIdentifier: "catalogView") as? SSUCatalogTableViewController else {
                 print("Could not instantiate view controller with identifier of type SecondViewController")
                 return
             }
-        
-        
+
         self.navigationController?.pushViewController(vc, animated:true)
     }
     
@@ -94,9 +99,9 @@ class SSUScheduleTableViewController: UITableViewController  {
     }
     
     private func refresh() {
-        //SSUScheduleModule.instance.updateData({
+        SSUScheduleModule.instance.updateData({
             self.loadSchedule()
-        //})
+        })
     }
     
     private func loadSchedule() {
@@ -116,24 +121,56 @@ class SSUScheduleTableViewController: UITableViewController  {
     }
     
     private func reloadScheduleTableView() {
-        getCoursesInSchedule()
         tableView.reloadData()
     }
 
     private func getCoursesInSchedule() {
+        var Monday = [SSUCourse]()
+        var Tuesday = [SSUCourse]()
+        var Wednessday = [SSUCourse]()
+        var Thrusday = [SSUCourse]()
+        var Friday = [SSUCourse]()
+        
         for course in schedule! {
             if let aCourse = SSUCourseBuilder.course(withID: Int(course.id), inContext: context),
                 let days = getDays(aCourse) {
                 for day in days {
-                    if ( !((sects?.contains(where: { $0.title == day}))!) ) {
-                        sects?.append(Sections(title: day, course: aCourse))
-                        
+                    if day == "Monday" {
+                        Monday.append(aCourse)
+                    }
+                    if day == "Tuesday" {
+                        Tuesday.append(aCourse)
+                    }
+                    if day == "Wednesday" {
+                        Wednessday.append(aCourse)
+                    }
+                    if day == "Thursday" {
+                        Thrusday.append(aCourse)
+                    }
+                    if day == "Friday" {
+                        Friday.append(aCourse)
                     }
                 }
             }
         }
+        
+        if Monday.count > 0 {
+            sects?.append(Sections(title: "Monday", courses: Monday))
+        }
+        if Tuesday.count > 0 {
+            sects?.append(Sections(title: "Tuesday", courses: Tuesday))
+        }
+        if Wednessday.count > 0 {
+            sects?.append(Sections(title: "Wednessday", courses: Wednessday))
+        }
+        if Thrusday.count > 0 {
+            sects?.append(Sections(title: "Thursday", courses: Thrusday))
+        }
+        if Friday.count > 0 {
+            sects?.append(Sections(title: "Friday", courses: Friday))
+        }
+        
     }
-    
     
     func getDays(_ course: SSUCourse) -> [String]? {
         var days: [String]? = []
