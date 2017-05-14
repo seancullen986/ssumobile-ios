@@ -33,6 +33,7 @@ class SSUCourseDetailHelper {
             let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 4)
             building = "Stevenson Hall"
             room = (facilityID?.substring(from: index!))!
+            print("\(room)")
         }
         else if ((facilityID?.range(of: "NICH")) != nil){
             let index = facilityID?.index((facilityID?.startIndex)!, offsetBy: 4)

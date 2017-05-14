@@ -155,6 +155,7 @@ class SSUCourseDetailViewController: UIViewController {
         
         
         if let f_id = classData?.facility_id {
+            print("facility id = \((classData?.facility_id)!)")
             let add_details = SSUCourseDetailHelper.location(f_id)
             if let building = add_details.building { _building.text = building }
             if let room = add_details.room { _room.text = room }
@@ -212,11 +213,20 @@ class SSUCourseDetailViewController: UIViewController {
                 let Building = add_details.building
                 let Room = add_details.room
             
+                // let vc = SSUDirectoryViewController()
+                // vc.reloadData()
                 
                 building = SSUDirectoryBuilder.building(withName: (Building)!, in: SSUDirectoryModule.instance.context)
+                // let directoryController = segue.destination as! SSUDirectoryViewController
+                // directoryController.reloadData()
                 let controller = segue.destination as! SSUBuildingViewController
-                controller.loadObject(self.building, in: self.building?.managedObjectContext)
-                //controller.load(Object: self.building, inContext: self.building.managedObjectContext)
+                
+                // controller.loadObject(self.building, in: self.building?.managedObjectContext)
+                controller.loadObject(self.building, in: SSUDirectoryModule.instance.context)
+                // self.building?.managedObjectContext)
+                
+                
+                // directoryController.displayObject(building)
                 // let predicate = NSPredicate(format: "building = %@", building)
                 // controller.defaultPredicate = predicate
                 // controller.entities = [SSUDirectoryEntityPerson, SSUDirectoryEntityDepartment, SSUDirectoryEntitySchool]
